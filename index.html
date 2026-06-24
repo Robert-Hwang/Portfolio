@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YOUR NAME | Portfolio</title>
+    <meta
+      name="description"
+      content="Dark, editorial style personal portfolio template for a frontend developer or designer."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="intro" id="intro" aria-label="Opening message">
+      <div class="intro__shade"></div>
+      <div class="intro__inner">
+        <p class="intro__eyebrow">PORTFOLIO 2026</p>
+        <h1 class="intro__title" id="typingText"></h1>
+      </div>
+    </div>
+
+    <main class="site-main" id="siteMain">
+      <section class="profile section section--dark" id="profile">
+        <div class="section__line" aria-hidden="true"></div>
+        <div class="inner profile__grid">
+          <div class="profile__content">
+            <p class="section-kicker reveal">CREATIVE FRONTEND DEVELOPER</p>
+            <h2 class="profile__name reveal">
+              <span>YOUR</span>
+              <span>NAME</span>
+            </h2>
+            <div class="profile__meta reveal">
+              <p>UI/UX Designer / Frontend Developer</p>
+              <a href="mailto:you@example.com">you@example.com</a>
+            </div>
+          </div>
+          <a class="scroll-cta reveal" href="#about" aria-label="About section으로 이동">
+            <span>SCROLL</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="about section section--deep" id="about">
+        <div class="inner about__grid">
+          <h2 class="section-title reveal">ABOUT ME</h2>
+          <div class="about__copy reveal">
+            <p>사용자의 흐름을 먼저 이해하고, 화면의 구조와 감정을 함께 설계하는 것을 좋아합니다.</p>
+            <p>디자인과 개발을 분리해서 보기보다, 하나의 경험으로 자연스럽게 이어지는 방식을 고민합니다.</p>
+            <p>작은 인터랙션과 섬세한 간격이 전체 사용성에 영향을 준다고 믿으며, 완성도를 꾸준히 다듬습니다.</p>
+            <p>새로운 도구를 배우는 과정도 작업의 일부로 받아들이고, 기록하며 개선하는 태도로 성장하고 있습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills section section--dark" id="skills">
+        <div class="inner skills__layout">
+          <div class="skills__head reveal">
+            <h2 class="section-title">SKILLS</h2>
+            <p>Build, design, refine.</p>
+          </div>
+          <div class="skills__grid" aria-label="Skill list">
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">H</span>
+              <strong>HTML5</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">C</span>
+              <strong>CSS3</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">J</span>
+              <strong>JavaScript</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">R</span>
+              <strong>React</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">T</span>
+              <strong>Tailwind</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">G</span>
+              <strong>GSAP</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">F</span>
+              <strong>Figma</strong>
+            </article>
+            <article class="skill-card reveal">
+              <span class="skill-card__mark">P</span>
+              <strong>Photoshop</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="works section section--deep" id="works">
+        <div class="inner">
+          <div class="works__head">
+            <h2 class="works__title reveal">Selected <span>Works</span></h2>
+            <div class="works__tabs reveal" role="tablist" aria-label="Project category">
+              <button class="works__tab is-active" type="button" data-filter="all">ALL</button>
+              <button class="works__tab" type="button" data-filter="team">TEAM</button>
+              <button class="works__tab" type="button" data-filter="personal">PERSONAL</button>
+              <button class="works__tab" type="button" data-filter="design">DESIGN</button>
+            </div>
+          </div>
+
+          <div class="works__list">
+            <article class="work-card reveal" data-category="team">
+              <button
+                class="work-card__image"
+                type="button"
+                data-project-title="Brand Renewal"
+                data-project-type="Team Project · 4 weeks"
+                data-project-desc="브랜드의 핵심 메시지가 더 빠르게 보이도록 정보 구조와 메인 흐름을 재설계한 리뉴얼 프로젝트입니다."
+                data-project-stack="Planning, Responsive Web, Interaction"
+              >
+                <img src="./assets/project-01.png" alt="Brand Renewal project preview" />
+              </button>
+              <div class="work-card__body">
+                <div>
+                  <h3>Brand Renewal</h3>
+                  <p class="work-card__type">Team Project · 4 weeks</p>
+                </div>
+                <p>정보 구조와 시각적 위계를 정리해 탐색 흐름을 개선한 반응형 웹 프로젝트입니다.</p>
+                <button class="text-link project-open" type="button">Open Case <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+
+            <article class="work-card work-card--reverse reveal" data-category="personal">
+              <button
+                class="work-card__image"
+                type="button"
+                data-project-title="Daily Log App"
+                data-project-type="Personal Project · 2 weeks"
+                data-project-desc="매일의 기록을 카드와 필터로 정리하고, 사용자가 빠르게 돌아볼 수 있도록 만든 퍼스널 기록 앱입니다."
+                data-project-stack="JavaScript, Local Data, UI Motion"
+              >
+                <img src="./assets/project-02.png" alt="Daily Log App project preview" />
+              </button>
+              <div class="work-card__body">
+                <div>
+                  <h3>Daily Log App</h3>
+                  <p class="work-card__type">Personal Project · 2 weeks</p>
+                </div>
+                <p>기록을 정리하고 다시 살펴보기 쉬운 개인용 웹 애플리케이션을 설계했습니다.</p>
+                <button class="text-link project-open" type="button">Open Case <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+
+            <article class="work-card reveal" data-category="design">
+              <button
+                class="work-card__image"
+                type="button"
+                data-project-title="Commerce UI"
+                data-project-type="Web Design · Figma"
+                data-project-desc="상품 이미지가 돋보이도록 넓은 여백과 단순한 구매 흐름을 중심으로 구성한 커머스 메인 디자인입니다."
+                data-project-stack="Figma, Design System, Prototype"
+              >
+                <img src="./assets/project-03.png" alt="Commerce UI project preview" />
+              </button>
+              <div class="work-card__body">
+                <div>
+                  <h3>Commerce UI</h3>
+                  <p class="work-card__type">Web Design · Figma</p>
+                </div>
+                <p>제품과 콘텐츠가 또렷하게 보이도록 구성한 에디토리얼 무드의 커머스 UI입니다.</p>
+                <button class="text-link project-open" type="button">Open Case <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+
+            <article class="work-card work-card--reverse reveal" data-category="personal">
+              <button
+                class="work-card__image"
+                type="button"
+                data-project-title="Data Dashboard"
+                data-project-type="Personal Project · 3 weeks"
+                data-project-desc="복잡한 데이터를 한눈에 비교할 수 있도록 카드, 차트, 테이블의 우선순위를 정리한 대시보드입니다."
+                data-project-stack="React, Chart UI, Responsive Layout"
+              >
+                <img src="./assets/project-04.png" alt="Data Dashboard project preview" />
+              </button>
+              <div class="work-card__body">
+                <div>
+                  <h3>Data Dashboard</h3>
+                  <p class="work-card__type">Personal Project · 3 weeks</p>
+                </div>
+                <p>복잡한 정보를 스캔하기 쉽도록 밀도와 여백을 조율한 데이터 중심 화면입니다.</p>
+                <button class="text-link project-open" type="button">Open Case <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section section--dark" id="contact">
+        <div class="inner contact__inner reveal">
+          <p class="contact__text">
+            Thanks for viewing my portfolio.<br />
+            Always <span>improving</span>,<br />
+            Always <span>building</span>.
+          </p>
+          <a class="contact__mail" href="mailto:you@example.com">you@example.com</a>
+        </div>
+      </section>
+    </main>
+
+    <nav class="quick-nav" aria-label="Section navigation">
+      <a class="quick-nav__dot" href="#profile" data-label="Profile"></a>
+      <a class="quick-nav__dot" href="#about" data-label="About"></a>
+      <a class="quick-nav__dot" href="#skills" data-label="Skills"></a>
+      <a class="quick-nav__dot" href="#works" data-label="Works"></a>
+      <a class="quick-nav__dot" href="#contact" data-label="Contact"></a>
+    </nav>
+
+    <div class="project-modal" id="projectModal" aria-hidden="true">
+      <div class="project-modal__backdrop" data-close-modal></div>
+      <section class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="project-modal__close" type="button" data-close-modal aria-label="Close">×</button>
+        <p class="project-modal__type" id="modalType"></p>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <dl>
+          <dt>Stack</dt>
+          <dd id="modalStack"></dd>
+        </dl>
+      </section>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
