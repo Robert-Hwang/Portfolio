@@ -30,15 +30,15 @@ async function typeIntro() {
     const line = lines[lineIndex];
     for (const char of line) {
       typingText.innerHTML += char;
-      await sleep(72);
+      await sleep(80);
     }
     if (lineIndex < lines.length - 1) {
       typingText.innerHTML += "<br />";
-      await sleep(260);
+      await sleep(300);
     }
   }
 
-  await sleep(620);
+  await sleep(800);
   finishIntro();
 }
 
@@ -54,11 +54,11 @@ function finishIntro() {
 
   window.setTimeout(() => {
     if (quickNav) quickNav.classList.add("is-visible");
-  }, 620);
+  }, 1000);
 
   window.setTimeout(() => {
     if (intro) intro.classList.add("is-hidden");
-  }, 1120);
+  }, 1520);
 }
 
 function initReveal() {
@@ -69,7 +69,7 @@ function initReveal() {
     const section = item.closest(".section");
     const sectionItems = section ? [...section.querySelectorAll(".reveal")] : [];
     const itemIndex = Math.max(0, sectionItems.indexOf(item));
-    item.style.setProperty("--reveal-delay", `${Math.min(itemIndex, 4) * 110}ms`);
+    item.style.setProperty("--reveal-delay", `${Math.min(itemIndex, 4) * 160}ms`);
   });
 
   if (!("IntersectionObserver" in window)) {
@@ -138,7 +138,7 @@ function initTabs() {
             { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
             { opacity: 0, filter: "blur(8px)", transform: "translate3d(0, 44px, 0) scale(0.98)" },
           ],
-          { duration: 280, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 35 },
+          { duration: 420, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 60 },
         );
 
         cards.forEach((card) => {
@@ -155,7 +155,7 @@ function initTabs() {
             { opacity: 0, filter: "blur(10px)", transform: "translate3d(0, 70px, 0) scale(0.975)" },
             { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
           ],
-          { duration: 720, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 90 },
+          { duration: 950, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 140 },
         );
       } finally {
         if (worksSection) worksSection.classList.remove("is-filtering");
