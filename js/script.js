@@ -44,7 +44,6 @@ async function typeIntro() {
 
 function finishIntro() {
   if (siteMain) siteMain.classList.add("is-visible");
-  document.body.classList.remove("is-intro");
   window.scrollTo({ top: 0, behavior: "auto" });
 
   window.requestAnimationFrame(() => {
@@ -58,6 +57,7 @@ function finishIntro() {
 
   window.setTimeout(() => {
     if (intro) intro.classList.add("is-hidden");
+    document.body.classList.remove("is-intro");
   }, 1520);
 }
 
