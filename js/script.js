@@ -4,17 +4,16 @@ const typingText = document.getElementById("typingText");
 const quickNav = document.querySelector(".quick-nav");
 const revealItems = document.querySelectorAll(".reveal");
 const navDots = document.querySelectorAll(".quick-nav__dot");
-const worksSection = document.getElementById("works");
 const sections = ["profile", "about", "skills", "works", "contact"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
-const lines = ["기록하고,", "설계하고,", "더 나은 경험으로 완성합니다."];
+const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,", "더 나은 디자인으로 완성합니다."];
 
 document.body.classList.add("is-intro");
 
 let revealInitialized = false;
-let isFiltering = false;
+let isArchiveFiltering = false;
 
 function sleep(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -92,74 +91,74 @@ function initReveal() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
-function initTabs() {
-  const tabs = document.querySelectorAll(".works__tab");
-  const cards = document.querySelectorAll(".work-card");
+async function animateElements(elementList, keyframes, timing) {
+  if (!("animate" in Element.prototype) || elementList.length === 0) return;
 
-  async function animateCards(cardList, keyframes, timing) {
-    if (!("animate" in Element.prototype) || cardList.length === 0) return;
+  const { stagger = 0, delay = 0, ...animationTiming } = timing;
+  const animations = elementList.map((element, index) =>
+    element.animate(keyframes, {
+      ...animationTiming,
+      delay: delay + index * stagger,
+    }),
+  );
 
-    const { stagger = 0, delay = 0, ...animationTiming } = timing;
+  await Promise.all(animations.map((animation) => animation.finished.catch(() => undefined)));
+  animations.forEach((animation) => animation.cancel());
+}
 
-    const animations = cardList.map((card, index) =>
-      card.animate(keyframes, {
-        ...animationTiming,
-        delay: delay + index * stagger,
-      }),
-    );
+function initArchiveFilters() {
+  const archive = document.getElementById("archive");
+  const filters = document.querySelectorAll(".archive__filter");
+  const items = document.querySelectorAll(".archive-card");
 
-    await Promise.all(animations.map((animation) => animation.finished.catch(() => undefined)));
-    animations.forEach((animation) => animation.cancel());
-  }
+  if (!archive || filters.length === 0 || items.length === 0) return;
 
-  tabs.forEach((tab) => {
-    tab.setAttribute("aria-pressed", String(tab.classList.contains("is-active")));
+  filters.forEach((filterButton) => {
+    filterButton.addEventListener("click", async () => {
+      if (isArchiveFiltering || filterButton.classList.contains("is-active")) return;
 
-    tab.addEventListener("click", async () => {
-      if (isFiltering || tab.classList.contains("is-active")) return;
+      const filter = filterButton.dataset.archiveFilter;
+      const visibleItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
 
-      const filter = tab.dataset.filter;
-      const visibleCards = [...cards].filter((card) => !card.classList.contains("is-hidden"));
-
-      isFiltering = true;
-      if (worksSection) worksSection.classList.add("is-filtering");
+      isArchiveFiltering = true;
+      archive.classList.add("is-filtering");
 
       try {
-        tabs.forEach((item) => {
+        filters.forEach((item) => {
           item.classList.remove("is-active");
           item.setAttribute("aria-pressed", "false");
         });
-        tab.classList.add("is-active");
-        tab.setAttribute("aria-pressed", "true");
+        filterButton.classList.add("is-active");
+        filterButton.setAttribute("aria-pressed", "true");
 
-        await animateCards(
-          visibleCards,
+        await animateElements(
+          visibleItems,
           [
             { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
-            { opacity: 0, filter: "blur(8px)", transform: "translate3d(0, 44px, 0) scale(0.98)" },
+            { opacity: 0, filter: "blur(7px)", transform: "translate3d(0, 24px, 0) scale(0.98)" },
           ],
-          { duration: 420, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 60 },
+          { duration: 300, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 24 },
         );
 
-        cards.forEach((card) => {
-          const isMatch = filter === "all" || card.dataset.category === filter;
-          card.classList.toggle("is-hidden", !isMatch);
+        items.forEach((item) => {
+          const isMatch = filter === "all" || item.dataset.archiveCategory === filter;
+          item.classList.toggle("is-hidden", !isMatch);
         });
 
-        const nextCards = [...cards].filter((card) => !card.classList.contains("is-hidden"));
-        nextCards.forEach((card) => card.classList.add("is-visible"));
+        const nextItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
+        nextItems.forEach((item) => item.classList.add("is-visible"));
 
-        await animateCards(
-          nextCards,
+        await animateElements(
+          nextItems,
           [
-            { opacity: 0, filter: "blur(10px)", transform: "translate3d(0, 70px, 0) scale(0.975)" },
+            { opacity: 0, filter: "blur(8px)", transform: "translate3d(0, 42px, 0) scale(0.975)" },
             { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
           ],
-          { duration: 950, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 140 },
+          { duration: 760, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 75 },
         );
       } finally {
-        if (worksSection) worksSection.classList.remove("is-filtering");
-        isFiltering = false;
+        archive.classList.remove("is-filtering");
+        isArchiveFiltering = false;
       }
     });
   });
@@ -186,36 +185,49 @@ function initQuickNav() {
 
 function initProjectModal() {
   const modal = document.getElementById("projectModal");
+  const modalPanel = modal?.querySelector(".project-modal__panel");
+  const modalMedia = document.getElementById("modalMedia");
+  const modalImage = document.getElementById("modalImage");
   const modalTitle = document.getElementById("modalTitle");
   const modalType = document.getElementById("modalType");
+  const modalMeta = document.getElementById("modalMeta");
   const modalDesc = document.getElementById("modalDesc");
-  const modalStack = document.getElementById("modalStack");
+  const modalScope = document.getElementById("modalScope");
   const closeButtons = document.querySelectorAll("[data-close-modal]");
-  const triggers = document.querySelectorAll(".work-card__image, .project-open");
+  const triggers = document.querySelectorAll(".modal-open");
+  let lastFocusedElement = null;
 
-  if (!modal || !modalTitle || !modalType || !modalDesc || !modalStack) return;
+  if (!modal || !modalPanel || !modalMedia || !modalImage || !modalTitle || !modalType || !modalMeta || !modalDesc || !modalScope) return;
 
   function openModal(source) {
-    const card = source.closest(".work-card");
-    const dataSource = source.classList.contains("work-card__image")
-      ? source
-      : card?.querySelector(".work-card__image");
+    const dataSource = source.closest("[data-modal-item]");
 
     if (!dataSource) return;
 
-    modalTitle.textContent = dataSource.dataset.projectTitle || "Project";
-    modalType.textContent = dataSource.dataset.projectType || "";
-    modalDesc.textContent = dataSource.dataset.projectDesc || "";
-    modalStack.textContent = dataSource.dataset.projectStack || "";
+    const imagePath = dataSource.dataset.modalImage || "";
+    const title = dataSource.dataset.modalTitle || "Project";
+
+    lastFocusedElement = source;
+    modalTitle.textContent = title;
+    modalType.textContent = dataSource.dataset.modalType || "";
+    modalMeta.textContent = dataSource.dataset.modalMeta || "";
+    modalDesc.textContent = dataSource.dataset.modalDesc || "";
+    modalScope.textContent = dataSource.dataset.modalScope || "";
+    modalMedia.hidden = !imagePath;
+    modalImage.src = imagePath;
+    modalImage.alt = imagePath ? `${title} preview` : "";
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    modalPanel.scrollTop = 0;
+    modal.querySelector(".project-modal__close")?.focus();
   }
 
   function closeModal() {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    lastFocusedElement?.focus();
   }
 
   triggers.forEach((trigger) => {
@@ -232,7 +244,7 @@ function initProjectModal() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  initTabs();
+  initArchiveFilters();
   initQuickNav();
   initProjectModal();
   window.setTimeout(typeIntro, 180);
