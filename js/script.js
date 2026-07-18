@@ -17,7 +17,7 @@ function sleep(ms) {
 }
 
 async function typeIntro() {
-  if (!typingText || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (!typingText) {
     finishIntro();
     return;
   }
