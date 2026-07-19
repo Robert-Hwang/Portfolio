@@ -717,6 +717,26 @@ img {
   gap: 10px;
 }
 
+.project-collage--playdoggy {
+  grid-template-columns: minmax(0, 1.72fr) minmax(115px, 0.58fr);
+}
+
+.project-collage__campaign {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #e8decd;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+}
+
+.work-card__image .project-collage__campaign img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .project-placeholder {
   display: grid;
   place-content: center;
