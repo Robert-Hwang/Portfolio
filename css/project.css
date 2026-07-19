@@ -671,15 +671,19 @@
 
   .project-hero__collage {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(300px, 1.35fr) minmax(190px, 0.65fr);
-    min-height: 560px;
+    grid-template-rows: minmax(330px, auto) auto;
+    min-height: 0;
     padding: 10px;
     border-radius: 12px;
   }
 
+  .project-hero__main {
+    min-height: 330px;
+  }
+
   .project-hero__side {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(260px, auto));
     gap: 10px;
   }
 
