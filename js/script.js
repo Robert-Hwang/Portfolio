@@ -183,69 +183,8 @@ function initQuickNav() {
   setActiveDot();
 }
 
-function initProjectModal() {
-  const modal = document.getElementById("projectModal");
-  const modalPanel = modal?.querySelector(".project-modal__panel");
-  const modalMedia = document.getElementById("modalMedia");
-  const modalImage = document.getElementById("modalImage");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalType = document.getElementById("modalType");
-  const modalMeta = document.getElementById("modalMeta");
-  const modalDesc = document.getElementById("modalDesc");
-  const modalScope = document.getElementById("modalScope");
-  const closeButtons = document.querySelectorAll("[data-close-modal]");
-  const triggers = document.querySelectorAll(".modal-open");
-  let lastFocusedElement = null;
-
-  if (!modal || !modalPanel || !modalMedia || !modalImage || !modalTitle || !modalType || !modalMeta || !modalDesc || !modalScope) return;
-
-  function openModal(source) {
-    const dataSource = source.closest("[data-modal-item]");
-
-    if (!dataSource) return;
-
-    const imagePath = dataSource.dataset.modalImage || "";
-    const title = dataSource.dataset.modalTitle || "Project";
-
-    lastFocusedElement = source;
-    modalTitle.textContent = title;
-    modalType.textContent = dataSource.dataset.modalType || "";
-    modalMeta.textContent = dataSource.dataset.modalMeta || "";
-    modalDesc.textContent = dataSource.dataset.modalDesc || "";
-    modalScope.textContent = dataSource.dataset.modalScope || "";
-    modalMedia.hidden = !imagePath;
-    modalImage.src = imagePath;
-    modalImage.alt = imagePath ? `${title} preview` : "";
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    modalPanel.scrollTop = 0;
-    modal.querySelector(".project-modal__close")?.focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    lastFocusedElement?.focus();
-  }
-
-  triggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => openModal(trigger));
-  });
-
-  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
-}
-
 window.addEventListener("DOMContentLoaded", () => {
   initArchiveFilters();
   initQuickNav();
-  initProjectModal();
   window.setTimeout(typeIntro, 180);
 });
