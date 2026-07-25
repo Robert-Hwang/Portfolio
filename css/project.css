@@ -176,9 +176,10 @@
   box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34);
 }
 
-.project-hero__collage--campaign-portrait {
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
-  min-height: 680px;
+.project-hero__collage--single {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  aspect-ratio: 16 / 10;
 }
 
 .project-hero__main,
@@ -215,8 +216,12 @@
   border-radius: 12px;
 }
 
-.project-hero__collage--campaign-portrait .project-hero__side {
-  grid-template-rows: minmax(0, 1fr);
+.project-hero__collage--single .project-hero__main {
+  height: 100%;
+}
+
+.project-hero__collage--single .project-hero__main img {
+  object-fit: cover;
 }
 
 .campaign-grid--portrait .campaign-card > img,
@@ -644,9 +649,8 @@
     min-height: 510px;
   }
 
-  .project-hero__collage--campaign-portrait {
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
-    min-height: 540px;
+  .project-hero__collage--single {
+    min-height: 0;
   }
 
   .overview-layout {
@@ -720,13 +724,12 @@
     gap: 10px;
   }
 
-  .project-hero__collage--campaign-portrait .project-hero__side {
-    grid-template-rows: auto;
+  .project-hero__collage--single {
+    grid-template-rows: 1fr;
   }
 
-  .project-hero__collage--campaign-portrait .project-hero__side-image {
-    height: auto;
-    aspect-ratio: 2 / 3;
+  .project-hero__collage--single .project-hero__main {
+    min-height: 0;
   }
 
   .project-section {
