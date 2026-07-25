@@ -517,8 +517,19 @@ img {
 
 .skill-group:hover {
   transform: translateY(-8px);
-  border-color: rgba(98, 230, 207, 0.45);
   background: #222328;
+}
+
+.skill-group:nth-child(1):hover {
+  border-color: rgba(192, 156, 255, 0.45);
+}
+
+.skill-group:nth-child(2):hover {
+  border-color: rgba(98, 230, 207, 0.45);
+}
+
+.skill-group:nth-child(3):hover {
+  border-color: rgba(246, 211, 101, 0.45);
 }
 
 .skill-group__head {
