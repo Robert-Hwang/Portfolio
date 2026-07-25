@@ -499,7 +499,7 @@ img {
 /* 여기부터 새 구조 */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -865,11 +865,10 @@ img {
 }
 
 .leadership-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
-  gap: 32px;
-  width: 100%;
-  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  gap: 28px;
   padding: 28px;
   background: rgba(29, 29, 33, 0.88);
   border: 1px solid var(--line);
@@ -882,7 +881,7 @@ img {
 
 .leadership-panel:hover {
   transform: translateY(-8px);
-  border-color: rgba(246, 211, 101, 0.45);
+  border-color: rgba(239, 143, 182, 0.45);
   background: #222328;
 }
 
@@ -901,7 +900,7 @@ img {
   width: 38px;
   height: 38px;
   border-radius: 8px;
-  background: var(--accent-3);
+  background: #ef8fb6;
   color: #0d0e11;
   font-size: 15px;
   font-weight: 800;
@@ -929,7 +928,7 @@ img {
 
 .leadership-panel__list {
   display: flex;
-  align-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
   margin: 0;
@@ -1370,11 +1369,10 @@ img {
   }
 
   .skills__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .leadership-panel {
-    grid-template-columns: 1fr;
     gap: 24px;
   }
 
@@ -1493,7 +1491,7 @@ img {
   }
 
   .leadership-panel {
-    grid-template-columns: 1fr;
+    min-height: auto;
     gap: 22px;
     padding: 22px;
   }
