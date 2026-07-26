@@ -116,35 +116,6 @@ function initArchivePreview() {
   });
 }
 
-function initProjectPreview() {
-  const modal = document.getElementById("project-modal");
-  const previewButtons = document.querySelectorAll("[data-project-preview]");
-  const projectDetails = modal?.querySelectorAll("[data-project-detail]");
-  const modalTitle = modal?.querySelector("#project-modal-title");
-
-  if (!modal || !projectDetails || !modalTitle || previewButtons.length === 0 || typeof modal.showModal !== "function") return;
-
-  previewButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const projectId = button.dataset.projectPreview;
-      const selectedProject = [...projectDetails].find((detail) => detail.dataset.projectDetail === projectId);
-      if (!selectedProject) return;
-
-      projectDetails.forEach((detail) => {
-        detail.hidden = detail !== selectedProject;
-      });
-
-      modalTitle.textContent = selectedProject.querySelector("h3")?.textContent || "Selected Works";
-      modal.scrollTop = 0;
-      modal.showModal();
-    });
-  });
-
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) modal.close();
-  });
-}
-
 function initQuickNav() {
   function setActiveDot() {
     let current = sections[0]?.id;
@@ -166,7 +137,6 @@ function initQuickNav() {
 
 window.addEventListener("DOMContentLoaded", () => {
   initArchivePreview();
-  initProjectPreview();
   initQuickNav();
   window.setTimeout(typeIntro, 180);
 });
