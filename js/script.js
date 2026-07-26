@@ -13,7 +13,6 @@ const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,"
 document.body.classList.add("is-intro");
 
 let revealInitialized = false;
-let isArchiveFiltering = false;
 
 function sleep(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -91,76 +90,29 @@ function initReveal() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
-async function animateElements(elementList, keyframes, timing) {
-  if (!("animate" in Element.prototype) || elementList.length === 0) return;
+function initArchivePreview() {
+  const modal = document.getElementById("archive-modal");
+  const previewButtons = document.querySelectorAll("[data-archive-preview]");
+  const previewImage = modal?.querySelector(".archive-modal__image");
+  const previewTitle = modal?.querySelector("figcaption");
 
-  const { stagger = 0, delay = 0, ...animationTiming } = timing;
-  const animations = elementList.map((element, index) =>
-    element.animate(keyframes, {
-      ...animationTiming,
-      delay: delay + index * stagger,
-    }),
-  );
+  if (!modal || !previewImage || !previewTitle || previewButtons.length === 0 || typeof modal.showModal !== "function") return;
 
-  await Promise.all(animations.map((animation) => animation.finished.catch(() => undefined)));
-  animations.forEach((animation) => animation.cancel());
-}
+  previewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const sourceImage = button.querySelector("img");
+      if (!sourceImage) return;
 
-function initArchiveFilters() {
-  const archive = document.getElementById("archive");
-  const filters = document.querySelectorAll(".archive__filter");
-  const items = document.querySelectorAll(".archive-card");
-
-  if (!archive || filters.length === 0 || items.length === 0) return;
-
-  filters.forEach((filterButton) => {
-    filterButton.addEventListener("click", async () => {
-      if (isArchiveFiltering || filterButton.classList.contains("is-active")) return;
-
-      const filter = filterButton.dataset.archiveFilter;
-      const visibleItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
-
-      isArchiveFiltering = true;
-      archive.classList.add("is-filtering");
-
-      try {
-        filters.forEach((item) => {
-          item.classList.remove("is-active");
-          item.setAttribute("aria-pressed", "false");
-        });
-        filterButton.classList.add("is-active");
-        filterButton.setAttribute("aria-pressed", "true");
-
-        await animateElements(
-          visibleItems,
-          [
-            { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
-            { opacity: 0, filter: "blur(7px)", transform: "translate3d(0, 24px, 0) scale(0.98)" },
-          ],
-          { duration: 300, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 24 },
-        );
-
-        items.forEach((item) => {
-          const isMatch = filter === "all" || item.dataset.archiveCategory === filter;
-          item.classList.toggle("is-hidden", !isMatch);
-        });
-
-        const nextItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
-        nextItems.forEach((item) => item.classList.add("is-visible"));
-
-        await animateElements(
-          nextItems,
-          [
-            { opacity: 0, filter: "blur(8px)", transform: "translate3d(0, 42px, 0) scale(0.975)" },
-            { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
-          ],
-          { duration: 760, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 75 },
-        );
-      } finally {
-        archive.classList.remove("is-filtering");
-        isArchiveFiltering = false;
-      }
+      const title = button.dataset.archiveTitle || "Design Archive";
+      previewImage.src = sourceImage.currentSrc || sourceImage.src;
+      previewImage.alt = title;
+      previewTitle.textContent = title;
+      modal.showModal();
     });
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
   });
 }
 
@@ -184,7 +136,7 @@ function initQuickNav() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  initArchiveFilters();
+  initArchivePreview();
   initQuickNav();
   window.setTimeout(typeIntro, 180);
 });
