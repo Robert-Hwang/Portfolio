@@ -9,11 +9,34 @@ const sections = ["profile", "about", "skills", "works", "contact"]
   .filter(Boolean);
 
 const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,", "더 나은 디자인으로 완성합니다."];
+const introStorageKey = "jaewon-portfolio-intro-seen-at";
+const introCooldownMs = 10 * 60 * 1000;
+const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
 
-document.body.classList.add("is-intro");
+function shouldPlayIntro() {
+  if (forceIntro) return true;
+
+  try {
+    const lastSeenAt = Number(window.localStorage.getItem(introStorageKey));
+    return !Number.isFinite(lastSeenAt) || Date.now() - lastSeenAt > introCooldownMs;
+  } catch {
+    return true;
+  }
+}
+
+function markIntroAsSeen() {
+  try {
+    window.localStorage.setItem(introStorageKey, String(Date.now()));
+  } catch {
+    // If storage is unavailable, show the intro normally on the next visit.
+  }
+}
+
+const playIntro = shouldPlayIntro();
+
+if (playIntro) document.body.classList.add("is-intro");
 
 let revealInitialized = false;
-let isArchiveFiltering = false;
 
 function sleep(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -42,8 +65,9 @@ async function typeIntro() {
 }
 
 function finishIntro() {
+  markIntroAsSeen();
   if (siteMain) siteMain.classList.add("is-visible");
-  window.scrollTo({ top: 0, behavior: "auto" });
+  if (!window.location.hash) window.scrollTo({ top: 0, behavior: "auto" });
 
   window.requestAnimationFrame(() => {
     initReveal();
@@ -58,6 +82,14 @@ function finishIntro() {
     if (intro) intro.classList.add("is-hidden");
     document.body.classList.remove("is-intro");
   }, 1520);
+}
+
+function skipIntro() {
+  if (intro) intro.classList.add("is-hidden");
+  if (siteMain) siteMain.classList.add("is-visible");
+  if (quickNav) quickNav.classList.add("is-visible");
+
+  window.requestAnimationFrame(initReveal);
 }
 
 function initReveal() {
@@ -91,76 +123,29 @@ function initReveal() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
-async function animateElements(elementList, keyframes, timing) {
-  if (!("animate" in Element.prototype) || elementList.length === 0) return;
+function initArchivePreview() {
+  const modal = document.getElementById("archive-modal");
+  const previewButtons = document.querySelectorAll("[data-archive-preview]");
+  const previewImage = modal?.querySelector(".archive-modal__image");
+  const previewTitle = modal?.querySelector("figcaption");
 
-  const { stagger = 0, delay = 0, ...animationTiming } = timing;
-  const animations = elementList.map((element, index) =>
-    element.animate(keyframes, {
-      ...animationTiming,
-      delay: delay + index * stagger,
-    }),
-  );
+  if (!modal || !previewImage || !previewTitle || previewButtons.length === 0 || typeof modal.showModal !== "function") return;
 
-  await Promise.all(animations.map((animation) => animation.finished.catch(() => undefined)));
-  animations.forEach((animation) => animation.cancel());
-}
+  previewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const sourceImage = button.querySelector("img");
+      if (!sourceImage) return;
 
-function initArchiveFilters() {
-  const archive = document.getElementById("archive");
-  const filters = document.querySelectorAll(".archive__filter");
-  const items = document.querySelectorAll(".archive-card");
-
-  if (!archive || filters.length === 0 || items.length === 0) return;
-
-  filters.forEach((filterButton) => {
-    filterButton.addEventListener("click", async () => {
-      if (isArchiveFiltering || filterButton.classList.contains("is-active")) return;
-
-      const filter = filterButton.dataset.archiveFilter;
-      const visibleItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
-
-      isArchiveFiltering = true;
-      archive.classList.add("is-filtering");
-
-      try {
-        filters.forEach((item) => {
-          item.classList.remove("is-active");
-          item.setAttribute("aria-pressed", "false");
-        });
-        filterButton.classList.add("is-active");
-        filterButton.setAttribute("aria-pressed", "true");
-
-        await animateElements(
-          visibleItems,
-          [
-            { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
-            { opacity: 0, filter: "blur(7px)", transform: "translate3d(0, 24px, 0) scale(0.98)" },
-          ],
-          { duration: 300, easing: "cubic-bezier(0.4, 0, 1, 1)", fill: "forwards", stagger: 24 },
-        );
-
-        items.forEach((item) => {
-          const isMatch = filter === "all" || item.dataset.archiveCategory === filter;
-          item.classList.toggle("is-hidden", !isMatch);
-        });
-
-        const nextItems = [...items].filter((item) => !item.classList.contains("is-hidden"));
-        nextItems.forEach((item) => item.classList.add("is-visible"));
-
-        await animateElements(
-          nextItems,
-          [
-            { opacity: 0, filter: "blur(8px)", transform: "translate3d(0, 42px, 0) scale(0.975)" },
-            { opacity: 1, filter: "blur(0px)", transform: "translate3d(0, 0, 0) scale(1)" },
-          ],
-          { duration: 760, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both", stagger: 75 },
-        );
-      } finally {
-        archive.classList.remove("is-filtering");
-        isArchiveFiltering = false;
-      }
+      const title = button.dataset.archiveTitle || "Design Archive";
+      previewImage.src = sourceImage.currentSrc || sourceImage.src;
+      previewImage.alt = title;
+      previewTitle.textContent = title;
+      modal.showModal();
     });
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
   });
 }
 
@@ -184,7 +169,12 @@ function initQuickNav() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  initArchiveFilters();
+  initArchivePreview();
   initQuickNav();
-  window.setTimeout(typeIntro, 180);
+
+  if (playIntro) {
+    window.setTimeout(typeIntro, 180);
+  } else {
+    skipIntro();
+  }
 });
