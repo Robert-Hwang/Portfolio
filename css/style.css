@@ -664,8 +664,12 @@ img {
   transition: border-color 320ms ease;
 }
 
-.work-card__image--static {
-  cursor: default;
+button.work-card__image {
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+  appearance: none;
 }
 
 .work-card__image img {
@@ -902,6 +906,11 @@ img {
   font-weight: 600;
 }
 
+button.text-link {
+  border: 0;
+  cursor: pointer;
+}
+
 .text-link span {
   transition: transform 220ms ease;
 }
@@ -1116,10 +1125,6 @@ img {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.archive-group--sns .archive-group__grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .archive-group--offline .archive-group__grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1152,10 +1157,6 @@ img {
 
 .archive-group--banner .archive-card__visual {
   aspect-ratio: 1063 / 412;
-}
-
-.archive-group--sns .archive-card__visual {
-  aspect-ratio: 2800 / 1575;
 }
 
 .archive-group--offline .archive-card__visual {
@@ -1282,6 +1283,238 @@ img {
   color: var(--soft);
   font-size: 14px;
   font-weight: 600;
+}
+
+.project-modal {
+  width: min(1240px, calc(100vw - 36px));
+  max-width: none;
+  max-height: calc(100svh - 36px);
+  padding: clamp(24px, 4vw, 54px);
+  overflow: auto;
+  color: var(--text);
+  background: #151419;
+  border: 1px solid rgba(192, 156, 255, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.64);
+}
+
+.project-modal::backdrop {
+  background: rgba(5, 5, 7, 0.84);
+  backdrop-filter: blur(7px);
+}
+
+.project-modal form {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 14px;
+}
+
+.project-modal__close {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: var(--text);
+  font-size: 28px;
+  line-height: 1;
+  background: rgba(17, 16, 21, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+
+.project-modal__close:hover,
+.project-modal__close:focus-visible {
+  background: #24212b;
+  border-color: var(--accent);
+}
+
+.project-modal__sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.project-modal__content {
+  display: grid;
+  gap: 32px;
+}
+
+.project-modal__header {
+  padding-right: 54px;
+}
+
+.project-modal__header p,
+.project-modal__chapter-head > p,
+.project-modal__concept > p:first-of-type {
+  margin: 0 0 9px;
+  color: var(--accent-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.project-modal__header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(34px, 5vw, 68px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.project-modal__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.project-modal__visual {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #0d0d10;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  aspect-ratio: 16 / 10;
+}
+
+.project-modal__visual--wide {
+  aspect-ratio: 16 / 10;
+}
+
+.project-modal__visual--portrait {
+  aspect-ratio: 2 / 3;
+}
+
+.project-modal__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal__facts {
+  display: grid;
+  gap: 15px;
+  margin: 0;
+}
+
+.project-modal__facts div {
+  display: grid;
+  gap: 5px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-modal__facts dt,
+.project-modal__facts dd {
+  margin: 0;
+}
+
+.project-modal__facts dt {
+  color: var(--accent-2);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.project-modal__facts dd {
+  color: var(--soft);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.project-modal__chapter {
+  display: grid;
+  gap: 20px;
+}
+
+.project-modal__chapter-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.project-modal__chapter-head > p {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.project-modal__chapter h4,
+.project-modal__concept h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(21px, 2.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.project-modal__concept-grid,
+.project-modal__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-modal__concept {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.project-modal__concept > p:first-of-type {
+  margin: 5px 0 0;
+}
+
+.project-modal__concept .project-modal__facts {
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.project-modal__concept .project-modal__facts div {
+  padding-bottom: 12px;
+}
+
+.project-modal__concept .project-modal__facts dd {
+  font-size: 14px;
+}
+
+.project-modal__placeholder {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.project-modal__concept--explain {
+  max-width: 760px;
+  padding: 26px;
+}
+
+.project-modal__gallery--sns .project-modal__visual {
+  aspect-ratio: 2800 / 1575;
 }
 
 .contact {
@@ -1452,6 +1685,10 @@ img {
 
   .archive-group--offline .archive-group__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .project-modal__layout {
+    grid-template-columns: 1fr;
   }
 
 }
@@ -1635,8 +1872,7 @@ img {
     gap: 12px;
   }
 
-  .archive-group--banner .archive-group__grid,
-  .archive-group--sns .archive-group__grid {
+  .archive-group--banner .archive-group__grid {
     grid-template-columns: 1fr;
   }
 
@@ -1674,6 +1910,47 @@ img {
 
   .archive-modal__image {
     max-height: calc(100svh - 106px);
+  }
+
+  .project-modal {
+    width: min(100vw - 24px, 1240px);
+    max-height: calc(100svh - 24px);
+    padding: 22px;
+    border-radius: 12px;
+  }
+
+  .project-modal form {
+    top: 8px;
+    right: 8px;
+  }
+
+  .project-modal__close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .project-modal__content {
+    gap: 24px;
+  }
+
+  .project-modal__header {
+    padding-right: 38px;
+  }
+
+  .project-modal__concept-grid,
+  .project-modal__gallery {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-modal__concept {
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .project-modal__concept--explain {
+    padding: 20px;
   }
 
   .quick-nav {

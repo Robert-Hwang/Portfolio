@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/style.css?v=20260726-1" />
+    <link rel="stylesheet" href="./css/style.css?v=20260726-2" />
   </head>
   <body>
     <div class="intro" id="intro" aria-label="Opening message">
@@ -214,10 +214,10 @@
 
           <div class="works__grid works__grid--focused">
             <article class="work-card reveal">
-              <a class="work-card__image" href="./works/playdoggy.html" aria-label="PLAYDOGGY 프로젝트 상세 페이지 보기">
+              <button class="work-card__image" type="button" data-project-preview="playdoggy" aria-label="PLAYDOGGY 프로젝트 크게 보기">
                 <img src="./assets/project-01.webp" alt="PLAYDOGGY 쇼핑몰 메인 화면" />
                 <span class="work-card__number">01</span>
-              </a>
+              </button>
               <div class="work-card__body">
                 <p class="work-card__type">Website Renewal &amp; E-commerce</p>
                 <h3>PLAYDOGGY</h3>
@@ -232,15 +232,15 @@
                   <li>E-commerce</li>
                   <li>Campaign</li>
                 </ul>
-                <a class="text-link" href="./works/playdoggy.html">View Project <span aria-hidden="true">→</span></a>
+                <button class="text-link" type="button" data-project-preview="playdoggy">View Project <span aria-hidden="true">→</span></button>
               </div>
             </article>
 
             <article class="work-card reveal">
-              <div class="work-card__image work-card__image--static">
+              <button class="work-card__image" type="button" data-project-preview="k-league" aria-label="K리그 홈페이지 프로젝트 크게 보기">
                 <img src="./assets/project-04.png" alt="K리그 공식 홈페이지 디자인 대표 이미지" />
                 <span class="work-card__number">02</span>
-              </div>
+              </button>
               <div class="work-card__body">
                 <p class="work-card__type">K League Website Design</p>
                 <h3>DAEJEON HANA<br />CITIZEN &amp; ULSAN HD</h3>
@@ -255,14 +255,15 @@
                   <li>ULSAN HD</li>
                   <li>Sub Page</li>
                 </ul>
+                <button class="text-link" type="button" data-project-preview="k-league">View Project <span aria-hidden="true">→</span></button>
               </div>
             </article>
 
             <article class="work-card reveal">
-              <div class="work-card__image work-card__image--static">
+              <button class="work-card__image" type="button" data-project-preview="detail-page" aria-label="상세페이지 디자인 프로젝트 크게 보기">
                 <img src="./assets/project-03.png" alt="프로모션 상세페이지 디자인 대표 이미지" />
                 <span class="work-card__number">03</span>
-              </div>
+              </button>
               <div class="work-card__body">
                 <p class="work-card__type">E-commerce Content Design</p>
                 <h3>PROMOTION<br />DETAIL PAGE DESIGN</h3>
@@ -277,6 +278,29 @@
                   <li>Cookie Set</li>
                   <li>Typography</li>
                 </ul>
+                <button class="text-link" type="button" data-project-preview="detail-page">View Project <span aria-hidden="true">→</span></button>
+              </div>
+            </article>
+
+            <article class="work-card reveal">
+              <button class="work-card__image" type="button" data-project-preview="sns-event" aria-label="SNS Event Popup Design 프로젝트 크게 보기">
+                <img src="./assets/project-02.png" alt="SNS Event Popup Design 대표 이미지" />
+                <span class="work-card__number">04</span>
+              </button>
+              <div class="work-card__body">
+                <p class="work-card__type">Digital Content Design</p>
+                <h3>SNS EVENT<br />POPUP DESIGN</h3>
+                <p class="work-card__summary"><span>Concept Explain</span>SNS 이벤트 메시지와 참여 흐름을 담은 팝업 콘텐츠 디자인입니다.</p>
+                <dl class="work-card__facts">
+                  <div><dt>Format</dt><dd>2800 × 1575 PX · 2 Images</dd></div>
+                  <div><dt>Focus</dt><dd>Event Message · Participation Flow · Visual Impact</dd></div>
+                </dl>
+                <ul class="work-card__tags" aria-label="SNS Event Popup project tags">
+                  <li>SNS</li>
+                  <li>Event Popup</li>
+                  <li>Digital</li>
+                </ul>
+                <button class="text-link" type="button" data-project-preview="sns-event">View Project <span aria-hidden="true">→</span></button>
               </div>
             </article>
           </div>
@@ -328,13 +352,13 @@
           <div class="archive__head reveal">
             <p class="section-kicker">OTHER WORKS</p>
             <h2 class="archive__title">Design <span>Archive</span></h2>
-            <p class="archive__lead">메인배너, SNS 이벤트 팝업, 오프라인 디자인을 모아둔 작업 아카이브입니다. 이미지를 선택하면 크게 볼 수 있습니다.</p>
+            <p class="archive__lead">메인배너와 오프라인 디자인을 모아둔 작업 아카이브입니다. 이미지를 선택하면 크게 볼 수 있습니다.</p>
           </div>
 
           <div class="archive__groups">
             <section class="archive-group archive-group--banner" aria-labelledby="banner-archive-title">
               <div class="archive-group__head reveal">
-                <p class="archive-group__index">04</p>
+                <p class="archive-group__index">05</p>
                 <div>
                   <p class="archive-group__eyebrow">16 ITEMS · 1063 × 412 PX</p>
                   <h3 id="banner-archive-title">Main Banner Design</h3>
@@ -358,21 +382,6 @@
                 <article class="archive-card reveal"><button class="archive-card__visual" type="button" data-archive-preview data-archive-title="Main Banner 14" aria-label="Main Banner 14 크게 보기"><img src="./assets/project-03.png" alt="" /><span><small>MAIN BANNER</small>14</span></button></article>
                 <article class="archive-card reveal"><button class="archive-card__visual" type="button" data-archive-preview data-archive-title="Main Banner 15" aria-label="Main Banner 15 크게 보기"><img src="./assets/project-04.png" alt="" /><span><small>MAIN BANNER</small>15</span></button></article>
                 <article class="archive-card reveal"><button class="archive-card__visual" type="button" data-archive-preview data-archive-title="Main Banner 16" aria-label="Main Banner 16 크게 보기"><img src="./assets/project-02.png" alt="" /><span><small>MAIN BANNER</small>16</span></button></article>
-              </div>
-            </section>
-
-            <section class="archive-group archive-group--sns" aria-labelledby="sns-archive-title">
-              <div class="archive-group__head reveal">
-                <p class="archive-group__index">05</p>
-                <div>
-                  <p class="archive-group__eyebrow">2 ITEMS · 2800 × 1575 PX</p>
-                  <h3 id="sns-archive-title">SNS Event Popup Design</h3>
-                </div>
-              </div>
-              <div class="archive-group__grid">
-                <!-- Replace each temporary image with a 2800 × 1575px SNS event popup image. -->
-                <article class="archive-card reveal"><button class="archive-card__visual" type="button" data-archive-preview data-archive-title="SNS Event Popup 01" aria-label="SNS Event Popup 01 크게 보기"><img src="./assets/project-03.png" alt="" /><span><small>SNS EVENT POPUP</small>01</span></button></article>
-                <article class="archive-card reveal"><button class="archive-card__visual" type="button" data-archive-preview data-archive-title="SNS Event Popup 02" aria-label="SNS Event Popup 02 크게 보기"><img src="./assets/project-04.png" alt="" /><span><small>SNS EVENT POPUP</small>02</span></button></article>
               </div>
             </section>
 
@@ -414,6 +423,149 @@
         </figure>
       </dialog>
 
+      <dialog class="project-modal" id="project-modal" aria-labelledby="project-modal-title">
+        <form method="dialog">
+          <button class="project-modal__close" type="submit" aria-label="프로젝트 보기 닫기">×</button>
+        </form>
+        <h2 class="project-modal__sr-title" id="project-modal-title"></h2>
+
+        <article class="project-modal__content" data-project-detail="playdoggy" hidden>
+          <header class="project-modal__header">
+            <p>01 · Website Renewal &amp; E-commerce</p>
+            <h3>PLAYDOGGY</h3>
+          </header>
+          <div class="project-modal__layout">
+            <figure class="project-modal__visual project-modal__visual--wide">
+              <!-- Replace with the full-size PLAYDOGGY key visual. -->
+              <img src="./assets/project-01.webp" alt="PLAYDOGGY 쇼핑몰 메인 화면" />
+            </figure>
+            <dl class="project-modal__facts">
+              <div><dt>Overview</dt><dd>반려동물 처방식 쇼핑몰 PLAYDOGGY 홈페이지 리뉴얼</dd></div>
+              <div><dt>담당 역할</dt><dd>Design Lead · Web UI Design · Content Direction</dd></div>
+              <div><dt>기여도</dt><dd>Website Renewal · E-commerce Operation · Online Campaign</dd></div>
+              <div><dt>Work Date</dt><dd>2025.06 — 2026.07</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project-modal__content" data-project-detail="k-league" hidden>
+          <header class="project-modal__header">
+            <p>02 · K League Website Design</p>
+            <h3>DAEJEON HANA CITIZEN &amp; ULSAN HD</h3>
+          </header>
+          <section class="project-modal__chapter">
+            <div class="project-modal__chapter-head">
+              <p>2-1</p>
+              <h4>DAEJEON HANA CITIZEN Website Design</h4>
+            </div>
+            <div class="project-modal__layout">
+              <figure class="project-modal__visual project-modal__visual--wide">
+                <!-- Replace with Daejeon Hana Citizen official website image. -->
+                <img src="./assets/project-04.png" alt="대전하나시티즌 홈페이지 디자인 대표 이미지" />
+              </figure>
+              <dl class="project-modal__facts">
+                <div><dt>Overview</dt><dd>K리그 대전하나시티즌 홈페이지 디자인</dd></div>
+                <div><dt>기여도</dt><dd>Official Website UI · Information Structure · Main Page</dd></div>
+                <div><dt>Work Date</dt><dd>2019.01 — 2021.07</dd></div>
+              </dl>
+            </div>
+          </section>
+          <div class="project-modal__concept-grid">
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual">
+                <!-- Replace with Daejeon Hana Citizen subpage image. -->
+                <img src="./assets/project-04.png" alt="대전하나시티즌 홈페이지 서브페이지 예시" />
+              </figure>
+              <p>2-2 · DAEJEON HANA CITIZEN Subpage</p>
+              <h4>Concept Explain</h4>
+              <p class="project-modal__placeholder">서브페이지의 디자인 의도와 화면 구성 설명을 입력할 수 있는 영역입니다.</p>
+            </section>
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual">
+                <!-- Replace with Ulsan HD subpage image. -->
+                <img src="./assets/project-04.png" alt="울산HD 홈페이지 서브페이지 예시" />
+              </figure>
+              <p>2-3 · ULSAN HD Subpage</p>
+              <h4>Concept Explain</h4>
+              <p class="project-modal__placeholder">서브페이지의 디자인 의도와 화면 구성 설명을 입력할 수 있는 영역입니다.</p>
+            </section>
+          </div>
+        </article>
+
+        <article class="project-modal__content" data-project-detail="detail-page" hidden>
+          <header class="project-modal__header">
+            <p>03 · E-commerce Content Design</p>
+            <h3>PROMOTION DETAIL PAGE DESIGN</h3>
+          </header>
+          <div class="project-modal__concept-grid project-modal__concept-grid--detail">
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual project-modal__visual--portrait">
+                <!-- Replace with decaf coffee promotion content image. -->
+                <img src="./assets/project-03.png" alt="디카페인 커피 프로모션 콘텐츠 예시" />
+              </figure>
+              <p>3-1 · Decaf Coffee Promotion</p>
+              <dl class="project-modal__facts">
+                <div><dt>Overview</dt><dd>디카페인 커피 프로모션 콘텐츠</dd></div>
+                <div><dt>기여도</dt><dd>Promotion Content Design</dd></div>
+                <div><dt>Font</dt><dd>사용 폰트 정보를 입력할 수 있습니다.</dd></div>
+              </dl>
+            </section>
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual project-modal__visual--portrait">
+                <!-- Replace with decaf coffee promotion content image 2. -->
+                <img src="./assets/project-03.png" alt="디카페인 커피 프로모션 콘텐츠 2 예시" />
+              </figure>
+              <p>3-2 · Decaf Coffee Promotion 02</p>
+              <h4>Concept Explain</h4>
+              <p class="project-modal__placeholder">두 번째 프로모션 콘텐츠의 콘셉트 설명을 입력할 수 있는 영역입니다.</p>
+            </section>
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual project-modal__visual--portrait">
+                <!-- Replace with cookie set promotion content image. -->
+                <img src="./assets/project-03.png" alt="쿠키세트 프로모션 콘텐츠 예시" />
+              </figure>
+              <p>3-3 · Cookie Set Promotion</p>
+              <dl class="project-modal__facts">
+                <div><dt>Overview</dt><dd>쿠키세트 프로모션 콘텐츠</dd></div>
+                <div><dt>기여도</dt><dd>Promotion Content Design</dd></div>
+                <div><dt>Work Date</dt><dd>2021.11 — 2024.11</dd></div>
+              </dl>
+            </section>
+            <section class="project-modal__concept">
+              <figure class="project-modal__visual project-modal__visual--portrait">
+                <!-- Replace with cookie set promotion content image 2. -->
+                <img src="./assets/project-03.png" alt="쿠키세트 프로모션 콘텐츠 2 예시" />
+              </figure>
+              <p>3-4 · Cookie Set Promotion 02</p>
+              <h4>Concept Explain</h4>
+              <p class="project-modal__placeholder">두 번째 쿠키세트 콘텐츠의 콘셉트 설명을 입력할 수 있는 영역입니다.</p>
+            </section>
+          </div>
+        </article>
+
+        <article class="project-modal__content" data-project-detail="sns-event" hidden>
+          <header class="project-modal__header">
+            <p>04 · Digital Content Design</p>
+            <h3>SNS EVENT POPUP DESIGN</h3>
+          </header>
+          <div class="project-modal__gallery project-modal__gallery--sns">
+            <figure class="project-modal__visual">
+              <!-- Replace with SNS event popup image 01 (2800 × 1575px). -->
+              <img src="./assets/project-03.png" alt="SNS Event Popup Design 01 예시" />
+            </figure>
+            <figure class="project-modal__visual">
+              <!-- Replace with SNS event popup image 02 (2800 × 1575px). -->
+              <img src="./assets/project-04.png" alt="SNS Event Popup Design 02 예시" />
+            </figure>
+          </div>
+          <section class="project-modal__concept project-modal__concept--explain">
+            <p>Concept Explain</p>
+            <h4>SNS 이벤트 팝업의 메시지와 참여 흐름</h4>
+            <p class="project-modal__placeholder">이벤트 목적, 핵심 메시지, 참여 유도 방식 등 간단한 콘셉트 설명을 입력할 수 있는 영역입니다.</p>
+          </section>
+        </article>
+      </dialog>
+
       <section class="contact section section--dark" id="contact">
         <div class="inner contact__inner reveal">
           <p class="contact__text">
@@ -434,6 +586,6 @@
       <a class="quick-nav__dot" href="#contact" data-label="Contact"></a>
     </nav>
 
-    <script src="./js/script.js?v=20260726-1"></script>
+    <script src="./js/script.js?v=20260726-2"></script>
   </body>
 </html>
