@@ -10,7 +10,7 @@ const sections = ["profile", "about", "skills", "works", "contact"]
 
 const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,", "더 나은 디자인으로 완성합니다."];
 const introStorageKey = "jaewon-portfolio-intro-seen-at";
-const introCooldownMs = 24 * 60 * 60 * 1000;
+const introCooldownMs = 10 * 60 * 1000;
 const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
 
 function shouldPlayIntro() {
