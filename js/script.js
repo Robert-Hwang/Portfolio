@@ -9,8 +9,32 @@ const sections = ["profile", "about", "skills", "works", "contact"]
   .filter(Boolean);
 
 const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,", "더 나은 디자인으로 완성합니다."];
+const introStorageKey = "jaewon-portfolio-intro-seen-at";
+const introCooldownMs = 24 * 60 * 60 * 1000;
+const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
 
-document.body.classList.add("is-intro");
+function shouldPlayIntro() {
+  if (forceIntro) return true;
+
+  try {
+    const lastSeenAt = Number(window.localStorage.getItem(introStorageKey));
+    return !Number.isFinite(lastSeenAt) || Date.now() - lastSeenAt > introCooldownMs;
+  } catch {
+    return true;
+  }
+}
+
+function markIntroAsSeen() {
+  try {
+    window.localStorage.setItem(introStorageKey, String(Date.now()));
+  } catch {
+    // If storage is unavailable, show the intro normally on the next visit.
+  }
+}
+
+const playIntro = shouldPlayIntro();
+
+if (playIntro) document.body.classList.add("is-intro");
 
 let revealInitialized = false;
 
@@ -41,8 +65,9 @@ async function typeIntro() {
 }
 
 function finishIntro() {
+  markIntroAsSeen();
   if (siteMain) siteMain.classList.add("is-visible");
-  window.scrollTo({ top: 0, behavior: "auto" });
+  if (!window.location.hash) window.scrollTo({ top: 0, behavior: "auto" });
 
   window.requestAnimationFrame(() => {
     initReveal();
@@ -57,6 +82,14 @@ function finishIntro() {
     if (intro) intro.classList.add("is-hidden");
     document.body.classList.remove("is-intro");
   }, 1520);
+}
+
+function skipIntro() {
+  if (intro) intro.classList.add("is-hidden");
+  if (siteMain) siteMain.classList.add("is-visible");
+  if (quickNav) quickNav.classList.add("is-visible");
+
+  window.requestAnimationFrame(initReveal);
 }
 
 function initReveal() {
@@ -138,5 +171,10 @@ function initQuickNav() {
 window.addEventListener("DOMContentLoaded", () => {
   initArchivePreview();
   initQuickNav();
-  window.setTimeout(typeIntro, 180);
+
+  if (playIntro) {
+    window.setTimeout(typeIntro, 180);
+  } else {
+    skipIntro();
+  }
 });
