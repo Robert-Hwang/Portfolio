@@ -635,6 +635,10 @@ img {
   gap: 88px clamp(28px, 4vw, 64px);
 }
 
+.works__grid--focused .work-card:nth-child(n + 5) {
+  display: none;
+}
+
 .work-card {
   min-width: 0;
   padding-bottom: 34px;
