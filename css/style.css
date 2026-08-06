@@ -476,27 +476,6 @@ img {
   font-size: 18px;
 }
 
-.skills {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  padding: 110px 0;
-}
-
-.skills__layout {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.34fr) minmax(0, 0.66fr);
-  gap: 56px;
-  align-items: start;
-}
-
-.skills__head p {
-  margin: 0;
-  color: var(--soft);
-  font-size: 18px;
-}
-
-/* 여기부터 새 구조 */
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
