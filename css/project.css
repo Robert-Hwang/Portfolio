@@ -319,6 +319,22 @@
   word-break: keep-all;
 }
 
+.project-overview-image {
+  width: min(100%, 1200px);
+  margin: 0 auto clamp(56px, 7vw, 96px);
+  overflow: hidden;
+  background: #151518;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34);
+}
+
+.project-overview-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .overview-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.8fr);
@@ -820,6 +836,11 @@
     margin-top: 18px;
     font-size: 15px;
     line-height: 1.82;
+  }
+
+  .project-overview-image {
+    margin-bottom: 48px;
+    border-radius: 12px;
   }
 
   .overview-copy {
