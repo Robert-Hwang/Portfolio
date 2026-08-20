@@ -8,7 +8,7 @@ const sections = ["profile", "about", "skills", "works", "contact"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
-const lines = ["브랜드를 이해하고,", "웹과 컨텐츠를 설계하며,", "더 나은 디자인으로 완성합니다."];
+const lines = ["브랜드를 이해하고,", "웹과 이커머스를 설계하며,", "직접 만들고 운영합니다."];
 const introStorageKey = "jaewon-portfolio-intro-seen-at";
 const introCooldownMs = 10 * 60 * 1000;
 const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
