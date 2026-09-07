@@ -1,0 +1,124 @@
+/* Shared timing: a quick response that settles gently on both enter and leave. */
+:root {
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --motion-color: 380ms ease;
+}
+
+:is(.portfolio-home, .project-page) :is(a, button) {
+  transition: color var(--motion-color), background-color var(--motion-color),
+    border-color var(--motion-color), box-shadow 480ms var(--motion-ease);
+}
+
+/* Separate individual rotation from the existing scroll-reveal transform. */
+.portfolio-home :is(.skills__grid, .process-grid, .work-card, .archive-card) {
+  perspective: 1200px;
+}
+.portfolio-home .motion-surface {
+  rotate: var(--tilt-x, 0) var(--tilt-y, 1) 0 var(--tilt-angle, 0deg);
+}
+.portfolio-home :is(.skill-group, .leadership-panel, .process-card).reveal {
+  transition: opacity 460ms ease, transform 520ms var(--motion-ease),
+    translate 650ms var(--motion-ease), box-shadow 650ms var(--motion-ease),
+    background-color var(--motion-color), border-color var(--motion-color);
+  transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms, 0ms, 0ms;
+}
+.portfolio-home :is(.skill-group__mark, .leadership-panel__mark, .process-card > span) {
+  transition: color var(--motion-color), background-color var(--motion-color),
+    translate 650ms var(--motion-ease);
+}
+.portfolio-home .tool-icon {
+  transition: translate 600ms var(--motion-ease), rotate 650ms var(--motion-ease),
+    box-shadow 600ms var(--motion-ease);
+}
+
+.portfolio-home :is(.work-card__image, .archive-card__visual) {
+  transition: translate 650ms var(--motion-ease), box-shadow 650ms var(--motion-ease),
+    border-color var(--motion-color);
+}
+.portfolio-home :is(.work-card__image, .archive-card__visual) img {
+  transition: transform 850ms var(--motion-ease);
+}
+.portfolio-home :is(.work-card__caption, .archive-card__visual > span) {
+  transition: translate 650ms var(--motion-ease);
+}
+.portfolio-home .work-card__open {
+  transition: opacity 420ms ease, transform 650ms var(--motion-ease),
+    background-color var(--motion-color);
+}
+.portfolio-home .work-card .text-link::after {
+  transition: transform 600ms var(--motion-ease);
+}
+.portfolio-home :is(.text-link, .profile__contact-link, .scroll-cta) > span {
+  display: inline-block;
+  transition: transform 550ms var(--motion-ease), color var(--motion-color);
+}
+.portfolio-home .scroll-cta {
+  transition: color var(--motion-color), transform 550ms var(--motion-ease);
+}
+.portfolio-home :is(.contact__mail, .profile__baseline > a:not(.scroll-cta)) {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 7px;
+  transition: color var(--motion-color), text-decoration-color 450ms ease;
+}
+.portfolio-home .quick-nav__dot {
+  transition: transform 500ms var(--motion-ease), background-color var(--motion-color);
+}
+.portfolio-home .quick-nav__dot::before {
+  transition: opacity 350ms ease, transform 500ms var(--motion-ease);
+}
+.project-page :is(.project-back, .project-nav__link, .project-skip) {
+  transition: color var(--motion-color), transform 550ms var(--motion-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-home[data-interaction-motion="full"] :is(.skill-group, .leadership-panel):hover {
+    translate: 0 -4px;
+    box-shadow: 0 22px 42px #17171012;
+  }
+  .portfolio-home[data-interaction-motion="full"] :is(.skill-group, .leadership-panel):hover :is(.skill-group__mark, .leadership-panel__mark) {
+    background-color: #e8ddb6;
+    translate: 0 -2px;
+  }
+  .portfolio-home[data-interaction-motion="full"] .process-card:hover {
+    translate: 0 -4px;
+    background-color: #24231c;
+    border-color: #cfba7847;
+  }
+  .portfolio-home[data-interaction-motion="full"] .process-card:hover > span { color: #e5d59f; translate: 2px 0; }
+  .portfolio-home[data-interaction-motion="full"] .tools-list li:hover .tool-icon {
+    translate: 0 -6px;
+    rotate: -3deg;
+    box-shadow: 0 12px 20px #17171015;
+  }
+  .portfolio-home[data-interaction-motion="full"] :is(.work-card__image, .archive-card__visual):hover { translate: 0 -3px; }
+  .portfolio-home[data-interaction-motion="full"] .work-card:hover .work-card__image img,
+  .portfolio-home[data-interaction-motion="full"] .archive-card__visual:hover img { transform: scale(1.035); }
+  .portfolio-home[data-interaction-motion="full"] .work-card:hover .work-card__caption,
+  .portfolio-home[data-interaction-motion="full"] .archive-card__visual:hover > span { translate: 0 -4px; }
+  .portfolio-home[data-interaction-motion="full"] .profile__contact-link:hover { color: var(--accent); }
+  .portfolio-home[data-interaction-motion="full"] .profile__contact-link:hover > span { transform: translate(3px, -3px); }
+  .portfolio-home[data-interaction-motion="full"] .scroll-cta:hover { transform: none; }
+  .portfolio-home[data-interaction-motion="full"] .scroll-cta:hover > span { transform: translateY(4px); }
+  .portfolio-home[data-interaction-motion="full"] .text-link:hover > span { transform: translateX(5px); }
+  .portfolio-home[data-interaction-motion="full"] :is(.contact__mail, .profile__baseline > a:not(.scroll-cta)):hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* Keyboard focus keeps the same clear cues without depending on the pointer. */
+.portfolio-home .work-card:focus-within .work-card__open { opacity: 1; transform: none; }
+.portfolio-home :is(.text-link, .profile__contact-link, .contact__mail):focus-visible { color: var(--accent); }
+
+@media (hover: none), (pointer: coarse) {
+  .portfolio-home .motion-surface { rotate: none; translate: none; }
+  .portfolio-home :is(.work-card:hover .work-card__image img, .archive-card__visual:hover img) { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.portfolio-home:not([data-interaction-motion="full"]), .project-page) *,
+  :is(.portfolio-home:not([data-interaction-motion="full"]), .project-page) *::before,
+  :is(.portfolio-home:not([data-interaction-motion="full"]), .project-page) *::after { transition: none !important; }
+  .portfolio-home:not([data-interaction-motion="full"]) .motion-surface { rotate: none; translate: none; }
+  .portfolio-home:not([data-interaction-motion="full"]) :is(.work-card:hover .work-card__image img, .archive-card__visual:hover img) { transform: none; }
+}

@@ -1,0 +1,99 @@
+/* Reading order, image growth, and tool entrances share the existing layout. */
+.portfolio-home.scroll-enhanced .reading-host.reveal,
+.portfolio-home.scroll-enhanced .reading-title.reveal,
+.portfolio-home.scroll-enhanced .work-card.reveal {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+.portfolio-home .reading-word {
+  display: inline-block;
+  font: inherit;
+  font-style: normal;
+  letter-spacing: inherit;
+  color: inherit;
+  white-space: nowrap;
+}
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .reading-title .reading-word {
+  opacity: .16;
+  filter: blur(3px);
+  transform: translateY(.13em);
+  transition: opacity 700ms ease, filter 850ms ease,
+    transform 900ms cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--word-delay, 0ms);
+}
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .reading-title.is-read .reading-word {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* Body copy arrives as paragraphs/cards, slightly behind its section title. */
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .content-reveal {
+  opacity: 0;
+  filter: none;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 720ms ease, transform 850ms cubic-bezier(.22, 1, .36, 1),
+    translate 650ms var(--motion-ease), box-shadow 650ms var(--motion-ease),
+    background-color var(--motion-color), border-color var(--motion-color);
+  transition-delay: var(--content-delay, 260ms), var(--content-delay, 260ms), 0ms, 0ms, 0ms, 0ms;
+}
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .content-reveal.is-present {
+  opacity: 1;
+  transform: none;
+}
+.portfolio-home.scroll-enhanced .content-reveal .reveal {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: none;
+}
+.portfolio-home[data-interaction-motion="reduced"] .content-reveal {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* Scale is independent of pointer tilt, lift and the image's hover zoom. */
+.portfolio-home.scroll-enhanced .work-card__image {
+  scale: var(--scroll-scale, 1);
+  transform-origin: center center;
+}
+.portfolio-home.scroll-enhanced .tools-list > li {
+  transition: opacity 500ms ease, transform 850ms cubic-bezier(.16, 1.18, .3, 1);
+  transition-delay: calc(160ms + var(--tool-order, 0) * 85ms);
+}
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .tools-list:not(.is-unveiled) > li {
+  opacity: 0;
+  transform: translateY(38px) scale(.72) rotate(-7deg);
+}
+.portfolio-home.scroll-enhanced[data-interaction-motion="full"] .tools-list.is-unveiled > li {
+  opacity: 1;
+  transform: none;
+}
+
+.portfolio-home[data-interaction-motion="reduced"] .reading-word,
+.portfolio-home[data-interaction-motion="reduced"] .tools-list > li {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+.portfolio-home[data-interaction-motion="reduced"] .work-card__image { scale: 1; }
+@media (max-width: 720px) {
+  .portfolio-home.scroll-enhanced[data-interaction-motion="full"] .content-reveal:not(.is-present) {
+    transform: translate3d(0, 14px, 0);
+  }
+  .portfolio-home.scroll-enhanced .tools-list > li {
+    transition-delay: calc(100ms + var(--tool-order, 0) * 65ms);
+  }
+}
+@media print {
+  .portfolio-home.scroll-enhanced .reading-title .reading-word,
+  .portfolio-home.scroll-enhanced .content-reveal,
+  .portfolio-home.scroll-enhanced .tools-list > li {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .portfolio-home.scroll-enhanced .work-card__image { scale: 1; }
+}

@@ -1,0 +1,7 @@
+# Local backups, previews and verification artifacts are kept off the public site.
+/backups/
+/backup_260825/
+/previews/
+/tmp/
+/output/
+/.codex/
