@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 850" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="pigment" x1="0" y1=".1" x2="0" y2="1">
+      <stop stop-color="#443a1c" stop-opacity="0"/>
+      <stop offset=".25" stop-color="#7e692d" stop-opacity=".8"/>
+      <stop offset=".7" stop-color="#ae934b"/>
+      <stop offset="1" stop-color="#bdab6d"/>
+    </linearGradient>
+    <filter id="edge" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="28"/></filter>
+  </defs>
+  <path d="M-180 850C140 750 390 130 650 300S1050 960 1780 400V1150H-180Z" fill="url(#pigment)" filter="url(#edge)"/>
+</svg>

@@ -34,16 +34,22 @@
       content="https://robert-hwang.github.io/Portfolio/assets/portfolio-link-preview.png?v=20260817"
     />
     <link rel="icon" type="image/png" href="./assets/hero.png" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&amp;display=swap" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/style.css?v=20260828-1" />
+    <link rel="stylesheet" href="./css/style.css?v=20260907-release-1" />
+    <link rel="stylesheet" href="./css/refinement.css?v=20260907-release-1" />
+    <link rel="stylesheet" href="./css/home-art-direction.css?v=20260907-release-1" />
+    <link rel="stylesheet" href="./css/interactions.css?v=20260907-release-1" />
+    <link rel="stylesheet" href="./css/scroll-motion.css?v=20260907-release-1" />
   </head>
-  <body>
-    <div class="intro" id="intro" aria-label="Opening message">
+  <body class="portfolio-home" data-interaction-motion="full">
+    <div class="intro is-hidden" id="intro" aria-label="Opening message">
       <div class="intro__shade"></div>
       <div class="intro__inner">
         <p class="intro__eyebrow">PORTFOLIO 2026</p>
@@ -53,37 +59,32 @@
 
     <main class="site-main" id="siteMain">
       <section class="profile section section--dark" id="profile">
-        <div class="section__line" aria-hidden="true"></div>
+        <div class="pigment-field" aria-hidden="true"></div>
         <div class="inner profile__grid">
-          <div class="profile__content">
-            <p class="section-kicker reveal">WEB · E-COMMERCE DESIGNER</p>
-            <h2 class="profile__name reveal">
-              <span>JAEWON</span>
-              <span>HWANG</span>
-            </h2>
-            <div class="profile__meta reveal">
-              <p>웹과 이커머스를 디자인하고, 개선하고, 운영합니다.</p>
-              <a href="mailto:ghkdwo412@naver.com">ghkdwo412@naver.com</a>
-            </div>
+          <div class="profile__masthead">
+            <a class="profile__signature" href="#profile" aria-label="황재원 포트폴리오 처음으로">jh<span aria-hidden="true">.</span></a>
+            <span class="profile__edition">PORTFOLIO / 2026</span>
+            <a class="profile__contact-link" href="mailto:ghkdwo412@naver.com">Get in touch <span aria-hidden="true">↗</span></a>
           </div>
-          <a
-            class="scroll-cta reveal"
-            href="#about"
-            aria-label="About section으로 이동"
-          >
-            <span>SCROLL</span>
-            <span aria-hidden="true">↓</span>
-          </a>
+          <div class="profile__intro reveal">
+            <p class="section-kicker">WEB · E-COMMERCE DESIGNER</p>
+            <p class="profile__statement">웹과 이커머스를 디자인하고,<br /><span>개선하고, 운영합니다.</span></p>
+          </div>
+          <div class="profile__baseline">
+            <a href="mailto:ghkdwo412@naver.com">ghkdwo412@naver.com</a>
+            <a class="scroll-cta" href="#about" aria-label="About section으로 이동">Scroll to explore <span aria-hidden="true">↓</span></a>
+          </div>
+          <h2 class="profile__name" aria-label="Jaewon Hwang"><span>JAEWON</span><span>HWANG</span></h2>
         </div>
       </section>
 
       <section class="about section section--deep" id="about">
         <div class="inner about__grid">
           <div class="about__intro reveal">
-            <h2 class="section-title">ABOUT ME</h2>
+            <h2 class="section-title">About <span>me.</span></h2>
             <div class="about__copy">
               <p>
-                브랜드를 이해하고, 웹과 이커머스를 설계하는 디자이너입니다.
+                <strong>브랜드를 이해하고,</strong> 웹과 이커머스를 설계하는 디자이너입니다.
               </p>
               <p>
                 미술 갤러리, 스타트업, 한국 축구 K-리그, 신라명과, 반려동물
@@ -96,8 +97,8 @@
                 배분과 결과물 검수까지 담당했습니다.
               </p>
               <p>
-                보기 좋은 화면을 만드는 데서 끝나지 않고, 실제 운영 환경과
-                사용자 흐름, 개발 가능성을 함께 고려한 결과물을 지향합니다.
+                보기 좋은 화면을 만드는 데서 끝나지 않고, <strong>실제 운영 환경과
+                사용자 흐름, 개발 가능성을 함께 고려한 결과물</strong>을 지향합니다.
               </p>
             </div>
           </div>
@@ -167,7 +168,17 @@
         <div class="inner">
           <div class="skills__layout">
             <div class="skills__head reveal">
-              <h2 class="section-title">SKILLS & EXPERTISE</h2>
+              <h2 class="section-title"><span>Skills &amp;</span><span>Expertise.</span></h2>
+              <ul class="tools-list" aria-label="사용하는 도구">
+                <li><span class="tool-icon tool-icon--figma"><img src="./assets/tools/figma.svg" alt="" width="64" height="64" loading="lazy" /></span><span>Figma</span></li>
+                <li><span class="tool-icon tool-icon--adobe"><img src="./assets/tools/photoshop.svg" alt="" width="64" height="64" loading="lazy" /></span><span>Photoshop</span></li>
+                <li><span class="tool-icon tool-icon--adobe"><img src="./assets/tools/illustrator.svg" alt="" width="64" height="64" loading="lazy" /></span><span>Illustrator</span></li>
+                <li><span class="tool-icon"><img src="./assets/tools/chatgpt.svg" alt="" width="64" height="64" loading="lazy" /></span><span>ChatGPT</span></li>
+                <li><span class="tool-icon tool-icon--claude"><img src="./assets/tools/claude.svg" alt="" width="64" height="64" loading="lazy" /></span><span>Claude</span></li>
+                <li><span class="tool-icon tool-icon--gemini"><img src="./assets/tools/gemini.svg" alt="" width="64" height="64" loading="lazy" /></span><span>Gemini</span></li>
+                <li><span class="tool-icon"><img src="./assets/tools/vscode.svg" alt="" width="64" height="64" loading="lazy" /></span><span>VS Code</span></li>
+                <li><span class="tool-icon"><img src="./assets/tools/powerpoint.svg" alt="" width="64" height="64" loading="lazy" /></span><span>PowerPoint</span></li>
+              </ul>
               <p>Design. Build. Operate. Lead.</p>
             </div>
 
@@ -260,7 +271,7 @@
           <div class="works__head">
             <h2 class="works__title reveal">Selected <span>Works</span></h2>
             <p class="works__lead reveal">
-              웹 리뉴얼부터 이커머스 콘텐츠와 브랜드 운영까지, 서로 다른
+              <strong>웹 리뉴얼부터 이커머스 콘텐츠와 브랜드 운영까지,</strong> 서로 다른
               역할과 경험을 담은 대표 프로젝트입니다.
             </p>
           </div>
@@ -277,10 +288,10 @@
                   alt="PLAYDOGGY 쇼핑몰 메인 화면"
                 />
                 <span class="work-card__number">01</span>
+                <span class="work-card__open" aria-hidden="true">↗</span>
+                <div class="work-card__caption"><h3>PLAYDOGGY</h3><p>RENEWAL</p></div>
               </a>
               <div class="work-card__body">
-                <p class="work-card__type">PLAYDOGGY</p>
-                <h3>RENEWAL</h3>
                 <p class="work-card__meta">
                   E-COMMERCE WEBSITE · UI/UX · PUBLISHING
                 </p>
@@ -304,13 +315,10 @@
                   alt="신라명과 디카페인 커피 콘텐츠 대표 이미지"
                 />
                 <span class="work-card__number">02</span>
+                <span class="work-card__open" aria-hidden="true">↗</span>
+                <div class="work-card__caption"><h3>SHILLA BAKERY</h3><p>E-COMMERCE CONTENT DESIGN</p></div>
               </a>
               <div class="work-card__body">
-                <p class="work-card__type">SHILLA BAKERY</p>
-                <h3>
-                  <span class="work-card__title-line">E-COMMERCE</span>
-                  <span class="work-card__title-line">CONTENT DESIGN</span>
-                </h3>
                 <p class="work-card__meta">
                   PRODUCT DETAIL · PROMOTION · SNS CONTENT
                 </p>
@@ -337,10 +345,10 @@
                   alt="K리그 홈페이지 디자인 대표 이미지"
                 />
                 <span class="work-card__number">03</span>
+                <span class="work-card__open" aria-hidden="true">↗</span>
+                <div class="work-card__caption"><h3>K LEAGUE</h3><p>WEBSITE DESIGN</p></div>
               </a>
               <div class="work-card__body">
-                <p class="work-card__type">K LEAGUE</p>
-                <h3>WEBSITE DESIGN</h3>
                 <p class="work-card__meta">
                   WEBSITE UI · SUB PAGE · DIGITAL CONTENT
                 </p>
@@ -717,15 +725,16 @@
       </dialog>
 
       <section class="contact section section--dark" id="contact">
+        <div class="pigment-field" aria-hidden="true"></div>
         <div class="inner contact__inner reveal">
           <p class="contact__text">
-            Thanks for viewing my portfolio.<br />
-            Always <span>improving</span>,<br />
-            Always <span>building</span>.
+            <span class="contact__thanks">Thanks for viewing<br />my portfolio.</span>
+            <span class="contact__closing">Always <strong>improving</strong>,<br />Always <strong>building</strong>.</span>
           </p>
-          <a class="contact__mail" href="mailto:you@example.com"
+          <a class="contact__mail" href="mailto:ghkdwo412@naver.com"
           >ghkdwo412@naver.com</a>
         </div>
+        <p class="contact__wordmark" aria-hidden="true">JAEWON HWANG</p>
       </section>
     </main>
 
@@ -737,6 +746,8 @@
       <a class="quick-nav__dot" href="#contact" data-label="Contact"></a>
     </nav>
 
-    <script src="./js/script.js?v=20260820-1"></script>
+    <script src="./js/script.js?v=20260907-release-1"></script>
+    <script src="./js/interactions.js?v=20260907-release-1"></script>
+    <script src="./js/scroll-motion.js?v=20260907-release-1"></script>
   </body>
 </html>

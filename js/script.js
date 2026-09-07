@@ -12,9 +12,13 @@ const lines = ["브랜드를 이해하고,", "웹과 이커머스 경험을 설�
 const introStorageKey = "jaewon-portfolio-intro-seen-at";
 const introCooldownMs = 10 * 60 * 1000;
 const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
+const reduceMotion = document.body.dataset.interactionMotion !== "full" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function shouldPlayIntro() {
+  // An explicit replay is intentional; automatic visits still honor reduced motion.
   if (forceIntro) return true;
+  if (reduceMotion) return false;
 
   try {
     const lastSeenAt = Number(window.localStorage.getItem(introStorageKey));
@@ -34,7 +38,10 @@ function markIntroAsSeen() {
 
 const playIntro = shouldPlayIntro();
 
-if (playIntro) document.body.classList.add("is-intro");
+if (playIntro) {
+  document.body.classList.add("is-intro");
+  intro?.classList.remove("is-hidden");
+}
 
 let revealInitialized = false;
 
@@ -56,11 +63,11 @@ async function typeIntro() {
     }
     if (lineIndex < lines.length - 1) {
       typingText.innerHTML += "<br />";
-      await sleep(300);
+      await sleep(420);
     }
   }
 
-  await sleep(800);
+  await sleep(1800);
   finishIntro();
 }
 
@@ -81,7 +88,7 @@ function finishIntro() {
   window.setTimeout(() => {
     if (intro) intro.classList.add("is-hidden");
     document.body.classList.remove("is-intro");
-  }, 1520);
+  }, 1350);
 }
 
 function skipIntro() {
@@ -100,10 +107,10 @@ function initReveal() {
     const section = item.closest(".section");
     const sectionItems = section ? [...section.querySelectorAll(".reveal")] : [];
     const itemIndex = Math.max(0, sectionItems.indexOf(item));
-    item.style.setProperty("--reveal-delay", `${Math.min(itemIndex, 4) * 160}ms`);
+    item.style.setProperty("--reveal-delay", `${Math.min(itemIndex, 2) * 60}ms`);
   });
 
-  if (!("IntersectionObserver" in window)) {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
     return;
   }
@@ -117,7 +124,7 @@ function initReveal() {
         }
       });
     },
-    { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+    { threshold: 0.08, rootMargin: "0px 0px -24px 0px" },
   );
 
   revealItems.forEach((item) => observer.observe(item));
