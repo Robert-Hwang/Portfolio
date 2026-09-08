@@ -184,7 +184,7 @@
 .portfolio-home .tools-list {
   order: 1;
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: clamp(10px, 1.9vw, 28px);
   list-style: none;
   margin: 38px 0 40px;
@@ -198,7 +198,8 @@
 .portfolio-home .tool-icon--adobe { background: transparent; }
 .portfolio-home .tool-icon--adobe img { width: 100%; height: 100%; }
 .portfolio-home .tool-icon--claude { background: #f6eee7; }
-.portfolio-home .tool-icon--gemini { background: #16161a; }
+.portfolio-home .tool-icon--higgsfield { background: transparent; }
+.portfolio-home .tool-icon--higgsfield img { width: 100%; height: 100%; }
 .portfolio-home .skills__grid { gap: 28px; align-items: start; }
 .portfolio-home .skill-group,
 .portfolio-home .leadership-panel {
