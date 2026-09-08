@@ -1637,9 +1637,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-page *,
-  .project-page *::before,
-  .project-page *::after {
+  .project-page:not([data-interaction-motion="full"]) *,
+  .project-page:not([data-interaction-motion="full"]) *::before,
+  .project-page:not([data-interaction-motion="full"]) *::after {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
