@@ -1,0 +1,143 @@
+/* Shilla Bakery: the portfolio's quiet yellow frame, with original artwork. */
+.promotion-page {
+  --bg: #080809;
+  --bg-soft: #080809;
+  --text: #f5f4f5;
+  --muted: #aaa9ac;
+  --soft: #929095;
+  --accent: #cfba78;
+  --accent-2: #cfba78;
+  --line: #ffffff20;
+  --project-max: 1600px;
+  --case-ease: cubic-bezier(.22, 1, .36, 1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+.promotion-page .project-shell { padding-inline: clamp(22px, 3.8vw, 72px); }
+.promotion-page .project-header { background: #080809f5; border-color: #ffffff12; }
+.promotion-page .project-header__brand { font-weight: 500; letter-spacing: -.03em; }
+.promotion-page :is(.project-back, .project-nav__link) { font-weight: 400; }
+.promotion-page a { transition: color 450ms ease, background-color 450ms ease, transform 650ms var(--case-ease); }
+.promotion-page .project-back > span { color: var(--accent); }
+.promotion-page .project-hero { padding: 120px 0 100px; background: var(--bg); }
+.promotion-page .project-hero::after { display: none; }
+.promotion-page .case-opening { position: relative; isolation: isolate; padding-top: 28px; }
+.promotion-page .case-opening::before {
+  content: ""; position: absolute; z-index: -1;
+  inset: 20% calc(-1 * clamp(22px, 3.8vw, 72px)) -18%;
+  background: url('../assets/ochre-field.svg') center bottom / 100% 100% no-repeat;
+  opacity: .38;
+  mask-image: linear-gradient(transparent, #000 45%, #000 72%, transparent);
+}
+.promotion-page .case-opening__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; }
+.promotion-page .project-hero__eyebrow { grid-column: 1; margin: 0; color: var(--accent); font-weight: 400; font-size: 11px; }
+.promotion-page .project-hero__title { grid-column: 1; margin: 0; max-width: 100%; font-size: clamp(20px, 2.25vw, 34px); font-weight: 500; line-height: 1.4; letter-spacing: -.045em; white-space: normal; word-break: keep-all; }
+.promotion-page .project-hero__subtitle { grid-column: 2; grid-row: 1 / 3; align-self: start; color: var(--text); font-size: clamp(24px, 2.65vw, 42px); font-weight: 500; line-height: 1.45; letter-spacing: -.055em; }
+.promotion-page .project-hero__subtitle > span:not(.case-word) { color: #a7a59d; }
+.promotion-page .case-wordmark { margin: clamp(60px, 7vw, 112px) 0 0 -.045em; padding-bottom: .08em; font-size: clamp(44px, 12.65vw, 202px); font-weight: 500; line-height: .98; letter-spacing: -.075em; color: #e4d7ae; white-space: nowrap; mix-blend-mode: screen; mask-image: linear-gradient(#0004, #000 78%); }
+.promotion-page .project-meta { margin: 40px 0 38px; gap: 28px; }
+.promotion-page .project-meta__item { border-color: #d5c59438; padding-block: 18px; }
+.promotion-page .project-meta__item dt { color: #a39e8f; font-weight: 400; }
+.promotion-page .project-meta__item dd { font-size: 13px; font-weight: 400; }
+.promotion-page .project-hero__collage { padding: 0; border: 0; border-radius: 24px; background: transparent; aspect-ratio: 16 / 10; }
+.promotion-page .project-hero__main { border-radius: inherit; }
+
+.promotion-page .project-section { padding-block: clamp(88px, 9vw, 140px); scroll-margin-top: 72px; }
+.promotion-page h2[id] { scroll-margin-top: 100px; }
+.promotion-page .featured-content__heading { max-width: none; margin-bottom: 52px; }
+.promotion-page .featured-content__heading h2 { margin-top: 24px; font-size: clamp(40px, 6.3vw, 94px); line-height: 1.25; font-weight: 500; letter-spacing: -.055em; word-break: keep-all; }
+.promotion-page .case-heading-label { margin: 0 0 22px; font-size: 12px; font-weight: 400; line-height: 1.5; letter-spacing: .005em; color: var(--muted); }
+.promotion-page :is(.featured-content__label, .commerce-overview__label, .ongoing-commerce__eyebrow, .ongoing-commerce__group-head p) { color: var(--accent); font-size: 11px; font-weight: 400; letter-spacing: .04em; }
+.promotion-page .featured-content__description { color: var(--muted); font-size: clamp(17px, 1.65vw, 23px); line-height: 1.9; }
+.promotion-page .promotion-overview { --text: #191919; --muted: #62625f; --soft: #696961; --line: #19191924; --accent: #756329; background: #e7e7e5; border: 0; padding-block: clamp(80px, 8vw, 120px); scroll-margin-top: 72px; }
+.promotion-page .commerce-overview__grid { grid-template-columns: minmax(0, 1.5fr) minmax(220px, .55fr); gap: clamp(40px, 7vw, 100px); }
+.promotion-page .commerce-overview__copy h2 { font-size: clamp(27px, 3.2vw, 46px); line-height: 1.55; font-weight: 500; letter-spacing: -.045em; }
+.promotion-page .commerce-overview__copy h2 > span:last-child { color: #7b7b76; }
+.promotion-page .commerce-overview__copy h2 .case-word { display: inline-block; }
+.promotion-page .commerce-overview__copy h2 .case-word + .case-word::before { content: none; }
+.promotion-page .commerce-overview__main-work { padding: 30px; border: 0; border-radius: 26px; background: #fff; }
+.promotion-page .commerce-overview__main-work li { padding-block: 18px; font-size: clamp(18px, 2vw, 27px); font-weight: 500; letter-spacing: -.03em; }
+.promotion-page .commerce-overview__main-work li:last-child { border: 0; }
+.promotion-page .project-facts { padding: 12px 28px; border: 1px solid #ffffff12; border-radius: 26px; background: #161617; }
+.promotion-page .project-facts__row:last-child { border-bottom: 0; }
+.promotion-page .project-facts dt { font-weight: 400; letter-spacing: 0; }
+.promotion-page .featured-content__visual { padding: 0; border: 0; border-radius: 24px; background: #171718; overflow: hidden; box-shadow: none; }
+.promotion-page .featured-content__visual img { display: block; width: 100%; height: auto; max-height: none; border-radius: 0; }
+.promotion-page .ongoing-commerce__head h2 { font-weight: 500; letter-spacing: -.045em; }
+.promotion-page .ongoing-commerce__grid { perspective: 1200px; }
+.promotion-page .ongoing-card { padding: 10px 10px 20px; border: 1px solid #ffffff12; border-radius: 26px; background: #131314; }
+.promotion-page .ongoing-card__media { border: 0; border-radius: 18px; }
+.promotion-page .ongoing-card__body { padding: 18px 8px 0; }
+.promotion-page .ongoing-card__body h3 { font-size: clamp(15px, 1.25vw, 20px); }
+
+.promotion-page .project-nav { position: relative; isolation: isolate; overflow: hidden; padding: 36px 0 48px; background: var(--bg); border-top: 1px solid var(--line); }
+.promotion-page .project-nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url('../assets/ochre-field.svg') center 65% / cover; opacity: .25; mask-image: linear-gradient(transparent, #000); }
+.promotion-page .case-next { padding-top: 64px; }
+.promotion-page .case-next > p { color: #b2aa94; font-size: 12px; }
+.promotion-page .case-next > a { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: #e4d7ae; font-size: clamp(36px, 10vw, 156px); line-height: 1.1; font-weight: 500; letter-spacing: -.065em; }
+.promotion-page .case-next > a > span { font-size: .7em; transition: transform 650ms var(--case-ease); }
+.promotion-page .case-next > a:hover > span { transform: translate(8px, -8px); }
+
+/* Entrance and hover run independently, including the smooth return. */
+.promotion-page .case-word { display: inline-block; font: inherit; font-style: normal; color: inherit; letter-spacing: inherit; white-space: nowrap; }
+.promotion-page.case-motion .case-reading .case-word { opacity: .16; filter: blur(3px); transform: translateY(.13em); transition: opacity 700ms ease, filter 850ms ease, transform 900ms var(--case-ease); transition-delay: var(--word-delay, 0ms); }
+.promotion-page.case-motion .case-reading.is-read .case-word { opacity: 1; filter: blur(0); transform: none; }
+.promotion-page :is(.ongoing-card, .project-hero__collage) { transition: translate 650ms var(--case-ease), border-color 450ms ease, box-shadow 650ms var(--case-ease), background-color 450ms ease; }
+.promotion-page.case-motion .case-block { opacity: 0; transform: translateY(22px); transition: opacity 720ms ease, transform 850ms var(--case-ease), translate 650ms var(--case-ease), border-color 450ms ease, box-shadow 650ms var(--case-ease), background-color 450ms ease; transition-delay: var(--block-delay, 0ms), var(--block-delay, 0ms), 0ms, 0ms, 0ms, 0ms; }
+.promotion-page.case-motion .case-block.is-present { opacity: 1; transform: none; }
+.promotion-page.case-motion .case-grow { scale: var(--image-scale, .96); transform-origin: center top; }
+.promotion-page .motion-surface { rotate: var(--tilt-x, 0) var(--tilt-y, 1) 0 var(--tilt-angle, 0deg); }
+.promotion-page :is(.project-hero__main, .ongoing-card__media) img { transition: transform 850ms var(--case-ease); }
+.promotion-page :is(.project-back, .project-nav__link) > span { display: inline-block; transition: transform 650ms var(--case-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .promotion-page .ongoing-card:hover { translate: 0 -4px; border-color: #cfba7850; background-color: #1b1a17; box-shadow: 0 20px 40px #0003; }
+  .promotion-page .ongoing-card--sns:hover img { transform: scale(1.025); }
+  .promotion-page .project-hero__collage:hover { translate: 0 -3px; }
+  .promotion-page .project-hero__collage:hover img { transform: scale(1.025); }
+  .promotion-page .project-back:hover { transform: none; }
+  .promotion-page .project-back:hover > span { transform: translateX(-4px); }
+  .promotion-page .project-nav__link:hover > span { transform: translateX(4px); }
+  .promotion-page .project-nav__link:first-child:hover > span { transform: translateX(-4px); }
+}
+@media (hover: none), (pointer: coarse) {
+  .promotion-page .motion-surface { rotate: none; translate: none; }
+}
+@media (max-width: 1100px) {
+  .promotion-page .commerce-overview__grid { grid-template-columns: 1fr; }
+  .promotion-page .commerce-overview__main-work ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .promotion-page .commerce-overview__main-work li { border: 0; }
+}
+@media (max-width: 720px) {
+  .promotion-page .project-hero { padding: 108px 0 64px; }
+  .promotion-page .case-opening { padding-top: 0; }
+  .promotion-page .case-opening__intro { grid-template-columns: 1fr; gap: 12px; }
+  .promotion-page .project-hero__title { font-size: 23px; }
+  .promotion-page .project-hero__subtitle { grid-column: 1; grid-row: auto; margin-top: 28px; font-size: 25px; }
+  .promotion-page .case-wordmark { margin-top: 54px; font-size: 12vw; }
+  .promotion-page .project-meta { grid-template-columns: 1fr; gap: 0; margin-top: 28px; margin-bottom: 24px; }
+  .promotion-page .project-meta__item { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding-block: 14px; }
+  .promotion-page .project-meta__item dt { margin: 3px 0 0; }
+  .promotion-page .project-meta__item dd { font-size: 12px; }
+  .promotion-page .project-hero__collage { border-radius: 18px; }
+  .promotion-page .featured-content__heading h2 { font-size: clamp(30px, 8vw, 48px); }
+  .promotion-page .case-heading-label { font-size: 10px; margin-bottom: 16px; }
+  .promotion-page .commerce-overview__main-work { padding: 24px; }
+  .promotion-page .commerce-overview__main-work ul { grid-template-columns: 1fr; gap: 0; }
+  .promotion-page .commerce-overview__main-work li { padding-block: 12px; border-bottom: 1px solid var(--line); }
+  .promotion-page .project-facts { padding: 20px; border-radius: 20px; }
+  .promotion-page .project-facts__row { grid-template-columns: 90px minmax(0, 1fr); gap: 14px; }
+  .promotion-page .featured-content__visual { border-radius: 16px; }
+  .promotion-page .ongoing-card { padding: 6px 6px 16px; border-radius: 20px; }
+  .promotion-page .ongoing-card__media { border-radius: 14px; }
+  .promotion-page .ongoing-card__body { padding-inline: 4px; }
+  .promotion-page.case-motion .case-block { transform: translateY(14px); }
+  .promotion-page.case-motion .case-block.is-present { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .promotion-page:not([data-interaction-motion="full"]) :is(.case-word, .case-block) { transition: none; opacity: 1; transform: none; filter: none; }
+  .promotion-page:not([data-interaction-motion="full"]) .case-grow { scale: 1; }
+}
+@media print {
+  .promotion-page.case-motion :is(.case-block, .case-reading .case-word) { opacity: 1; filter: none; transform: none; }
+  .promotion-page.case-motion .case-grow { scale: 1; }
+}
