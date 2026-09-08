@@ -1,6 +1,6 @@
 (() => {
   const body = document.body;
-  if (!body.matches('.playdoggy-case, .league-page') || !('IntersectionObserver' in window)) return;
+  if (!body.matches('.playdoggy-case, .league-page, .promotion-page') || !('IntersectionObserver' in window)) return;
   if (body.dataset.interactionMotion !== 'full' && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // Headings lead; descriptions and cards enter intact, slightly behind them.
@@ -69,7 +69,7 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: .04 });
   [...titles, ...blocks].forEach(el => observer.observe(el));
 
-  const images = [...document.querySelectorAll('.project-hero__collage, .commerce-main__screen, .responsive-showcase__devices, .league-page .featured-content__visual')].map(el => {
+  const images = [...document.querySelectorAll('.project-hero__collage, .commerce-main__screen, .responsive-showcase__devices, .league-page .featured-content__visual, .promotion-page .featured-content__visual')].map(el => {
     el.classList.add('case-grow');
     return { el, current: .96 };
   });

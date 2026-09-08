@@ -7,7 +7,8 @@
     '.playdoggy-case .need-card', '.playdoggy-case .ux-decision',
     '.playdoggy-case .priority-map__flow > div', '.playdoggy-case .publishing-flow > div',
     '.playdoggy-case .project-hero__collage',
-    '.league-page .project-hero__collage', '.league-page .league-selected-proposal'
+    '.league-page .project-hero__collage', '.league-page .league-selected-proposal',
+    '.promotion-page .project-hero__collage', '.promotion-page .ongoing-card'
   ].join(', '));
   const active = new Set();
   let frame = 0;
