@@ -2,7 +2,13 @@
   const pointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   // Motion is part of the final design, independent of the old preview toggle.
   document.body.dataset.interactionMotion = 'full';
-  const surfaces = document.querySelectorAll('.skill-group, .leadership-panel, .process-card, .work-card__image, .archive-card__visual');
+  const surfaces = document.querySelectorAll([
+    '.skill-group', '.leadership-panel', '.process-card', '.work-card__image', '.archive-card__visual',
+    '.playdoggy-case .need-card', '.playdoggy-case .ux-decision',
+    '.playdoggy-case .priority-map__flow > div', '.playdoggy-case .publishing-flow > div',
+    '.playdoggy-case .project-hero__collage',
+    '.league-page .project-hero__collage', '.league-page .league-selected-proposal'
+  ].join(', '));
   const active = new Set();
   let frame = 0;
   let previousTime = 0;
@@ -41,8 +47,8 @@
   const states = [...surfaces].map((element) => {
     element.classList.add('motion-surface');
     const state = { element, x: 0, y: 0, targetX: 0, targetY: 0, bounds: null };
-    const strength = element.matches('.skill-group, .leadership-panel') ? 3 :
-      element.matches('.process-card') ? 2 : 1.4;
+    const strength = element.matches('.skill-group, .leadership-panel, .need-card, .priority-map__flow > div') ? 3 :
+      element.matches('.process-card, .ux-decision, .publishing-flow > div, .league-selected-proposal') ? 2 : 1.4;
 
     function move(event) {
       if (!pointer.matches || document.body.dataset.interactionMotion !== 'full' || event.pointerType !== 'mouse') return;
