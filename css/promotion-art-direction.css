@@ -141,3 +141,46 @@
   .promotion-page.case-motion :is(.case-block, .case-reading .case-word) { opacity: 1; filter: none; transform: none; }
   .promotion-page.case-motion .case-grow { scale: 1; }
 }
+
+/* Editorial information blocks, consistent with the K League case study. */
+.promotion-page .commerce-overview__main-work {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.promotion-page .commerce-overview__main-work li { border-bottom: 1px solid var(--line); }
+.promotion-page .commerce-overview__main-work li:last-child { border-bottom: 0; }
+.promotion-page .project-facts {
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.promotion-page .ongoing-card {
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  rotate: none;
+}
+.promotion-page .ongoing-card__body {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+@media (hover: hover) and (pointer: fine) {
+  .promotion-page .ongoing-card:hover {
+    translate: none;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Match the K League credits' reading size and rhythm. */
+.promotion-page .project-facts { --line: #ffffff2b; }
+.promotion-page .project-facts__row { padding-block: 24px; }
+.promotion-page .project-facts dt { font-size: 14px; line-height: 1.85; }
+.promotion-page .project-facts dd { min-width: 0; font-size: 16px; line-height: 1.85; }
+.promotion-page .ongoing-card__body p { font-size: 12px; line-height: 1.8; margin-top: 8px; }
