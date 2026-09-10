@@ -8,8 +8,11 @@ const sections = ["profile", "about", "skills", "works", "contact"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 
-const lines = ["브랜드를 이해하고,", "웹과 이커머스 경험을 설계하며,", "브랜드의 가치를 디자인으로 구현합니다."];
-const introStorageKey = "jaewon-portfolio-intro-seen-at";
+const defaultIntroLines = ["브랜드를 이해하고,", "웹과 이커머스 경험을 설계하며,", "브랜드의 가치를 디자인으로 구현합니다."];
+const lines = document.body.dataset.introLines
+  ? document.body.dataset.introLines.split("|").map((line) => line.trim()).filter(Boolean)
+  : defaultIntroLines;
+const introStorageKey = document.body.dataset.introStorageKey || "jaewon-portfolio-intro-seen-at";
 const introCooldownMs = 10 * 60 * 1000;
 const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
 const reduceMotion = document.body.dataset.interactionMotion !== "full" &&
