@@ -131,7 +131,7 @@
 .league-page .commerce-overview__copy h2 > span:last-child { color: #7b7b76; }
 .league-page .commerce-overview__copy h2 .case-word { display: inline-block; }
 .league-page .commerce-overview__copy h2 .case-word + .case-word::before { content: none; }
-.league-page .commerce-overview__main-work { padding: 30px; border: 0; border-radius: 26px; background: #fff; }
+.league-page .commerce-overview__main-work { padding: 0; border: 0; border-radius: 0; background: transparent; }
 .league-page .commerce-overview__main-work li { padding-block: 18px; font-size: clamp(18px, 2vw, 27px); font-weight: 500; letter-spacing: -.03em; }
 .league-page .commerce-overview__main-work li:last-child { border: 0; }
 .league-page .league-featured__meta { gap: 22px; perspective: 1200px; }
@@ -152,7 +152,7 @@
 @media (max-width: 1100px) {
   .league-page .commerce-overview__grid { grid-template-columns: 1fr; }
   .league-page .commerce-overview__main-work ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .league-page .commerce-overview__main-work li { border: 0; }
+  .league-page .commerce-overview__main-work li { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 720px) {
   .league-page .project-hero { padding: 108px 0 64px; }
@@ -169,7 +169,7 @@
   .league-page .project-hero__collage { border-radius: 18px; }
   .league-page :is(.featured-content__heading, .league-sns-content__heading) h2 { font-size: clamp(30px, 8vw, 48px); }
   .league-page .case-heading-label { font-size: 10px; margin-bottom: 16px; }
-  .league-page .commerce-overview__main-work { padding: 24px; }
+  .league-page .commerce-overview__main-work { padding: 0; }
   .league-page .commerce-overview__main-work ul { grid-template-columns: 1fr; gap: 0; }
   .league-page .commerce-overview__main-work li { padding-block: 12px; border-bottom: 1px solid var(--line); }
   .league-page :is(.project-facts, .league-selected-proposal, .league-current-site-note) { padding: 20px; border-radius: 20px; }
@@ -181,6 +181,32 @@
 @media (prefers-reduced-motion: reduce) {
   .league-page:not([data-interaction-motion="full"]) :is(.case-word, .case-block) { transition: none; opacity: 1; transform: none; filter: none; }
   .league-page:not([data-interaction-motion="full"]) .case-grow { scale: 1; }
+}
+/* Compact project credits use the existing type scale and horizontal rules. */
+.league-page .league-current-site-note { border-radius: 0; }
+.league-page .project-facts.league-project-details {
+  --line: #ffffff2b;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.league-page .league-project-details .project-facts__row {
+  padding-block: 24px;
+}
+.league-page .league-project-details dt {
+  font-size: 14px;
+  line-height: 1.85;
+}
+.league-page .league-project-details dd {
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.85;
+}
+.league-page .league-project-details .project-facts__row:nth-child(2) dd {
+  max-width: 100%;
+  text-wrap: balance;
 }
 @media print {
   .league-page.case-motion :is(.case-block, .case-reading .case-word) { opacity: 1; filter: none; transform: none; }

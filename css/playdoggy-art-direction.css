@@ -205,3 +205,77 @@
   .playdoggy-case.case-motion :is(.case-block, .case-reading .case-word) { opacity: 1; filter: none; transform: none; }
   .playdoggy-case.case-motion .case-grow { scale: 1; }
 }
+
+/* Editorial information blocks, consistent with the K League case study. */
+.playdoggy-case .case-index {
+  border-inline: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.playdoggy-case .project-facts {
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.playdoggy-case .project-facts__row:last-child { border-bottom: 0; }
+.playdoggy-case :is(.need-card, .ux-decision, .publishing-flow > div),
+.playdoggy-case .priority-map--focused .priority-map__flow > div {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  rotate: none;
+}
+.playdoggy-case #challenge .need-card,
+.playdoggy-case .ux-decision,
+.playdoggy-case .publishing-flow > div,
+.playdoggy-case .priority-map--focused .priority-map__flow > div {
+  padding-inline: 0;
+}
+.playdoggy-case .priority-map--focused .priority-map__flow > div > span {
+  display: block;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+.playdoggy-case .priority-map--focused .priority-map__flow > div:first-child { padding-left: 0; }
+.playdoggy-case .priority-map--focused .priority-map__flow > div:last-child { padding-right: 0; }
+.playdoggy-case :is(.case-audit, .responsive-showcase) {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .playdoggy-case :is(.need-card, .ux-decision, .priority-map__flow > div, .publishing-flow > div):hover {
+    translate: none;
+    border-color: var(--line);
+    background: transparent;
+    box-shadow: none;
+  }
+  .playdoggy-case .priority-map--focused .priority-map__flow > div:hover > span {
+    background: transparent;
+  }
+}
+
+/* Slightly larger supporting text without changing the editorial grid. */
+.playdoggy-case .project-facts { --line: #ffffff2b; }
+.playdoggy-case .project-facts__row { padding-block: 24px; }
+.playdoggy-case .project-facts dt { font-size: 14px; line-height: 1.85; }
+.playdoggy-case .project-facts dd { min-width: 0; font-size: 16px; line-height: 1.85; }
+.playdoggy-case #challenge .need-card li { font-size: 15px; line-height: 1.85; }
+.playdoggy-case #commerce-ux .ux-decision p,
+.playdoggy-case .priority-map--focused .priority-map__flow p {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.9;
+}
+.playdoggy-case .publishing-flow small { font-size: 13px; line-height: 1.8; }
+@media (max-width: 768px) {
+  .playdoggy-case #challenge .need-card li { font-size: 14px; }
+  .playdoggy-case #challenge .need-card ul { gap: 10px; }
+}
