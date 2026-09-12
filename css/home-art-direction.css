@@ -233,9 +233,9 @@
 .portfolio-home .works__grid--featured .work-card { padding-bottom: 0; border: 0; }
 .portfolio-home .work-card:first-child { grid-column: auto; }
 .portfolio-home .work-card__image { border: 0; border-radius: 24px; aspect-ratio: 1; background: #202024; }
-.portfolio-home .work-card:first-child .work-card__image { aspect-ratio: 1; background: #b88145; }
-.portfolio-home .work-card:nth-child(2) .work-card__image { background: #bdd6d0; }
-.portfolio-home .work-card:nth-child(3) .work-card__image { background: #c7cbd0; }
+.portfolio-home .work-card--playdoggy .work-card__image { aspect-ratio: 1; background: #b88145; }
+.portfolio-home .work-card--shilla .work-card__image { background: #bdd6d0; }
+.portfolio-home .work-card--league .work-card__image { background: #c7cbd0; }
 .portfolio-home .work-card__image img { object-fit: contain; }
 .portfolio-home .work-card__image::after { content: ""; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, #07070ac7); pointer-events: none; }
 .portfolio-home .work-card__number { z-index: 1; top: 24px; left: 24px; width: 40px; height: 32px; border-radius: 99px; background: #1010148c; }
@@ -246,7 +246,7 @@
 .portfolio-home .work-card__open { z-index: 2; width: 48px; height: 48px; right: 26px; bottom: 32px; }
 .portfolio-home .works__grid--featured .work-card__body { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; min-height: 188px; gap: 12px; padding: 24px 2px 0; }
 .portfolio-home .work-card__body .work-card__meta { grid-column: 1 / -1; font-size: 11px; letter-spacing: .03em; margin: 0; color: #aca48c; }
-.portfolio-home .work-card__body .work-card__summary { margin: 0; max-width: 750px; font-size: 15px; line-height: 1.8; }
+.portfolio-home .work-card__body .work-card__summary { margin: 0; max-width: 750px; font-size: 16px; line-height: 1.85; color: #b1b0b5; }
 .portfolio-home .work-card .text-link { align-self: start; justify-self: start; margin: 6px 0 0; white-space: nowrap; font-size: 13px; }
 .portfolio-home .work-card:not(:first-child) .work-card__body { grid-template-columns: 1fr; }
 .portfolio-home .work-card:not(:first-child) .text-link { margin-top: 6px; justify-self: start; }
@@ -319,7 +319,7 @@
   .portfolio-home .work-card__caption p { font-size: 9px; }
   .portfolio-home .work-card__open { width: 36px; height: 36px; right: 18px; bottom: 22px; font-size: 21px; }
   .portfolio-home .works__grid--featured .work-card__body { grid-template-columns: 1fr; padding-top: 18px; gap: 10px; }
-  .portfolio-home .work-card__body .work-card__summary { font-size: 14px; }
+  .portfolio-home .work-card__body .work-card__summary { font-size: 15px; }
   .portfolio-home .work-card__body .work-card__meta { font-size: 9px; }
   .portfolio-home .work-card .text-link { justify-self: start; }
   .portfolio-home .contact { padding-top: 85px; min-height: 680px; }

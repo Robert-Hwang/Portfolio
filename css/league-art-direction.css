@@ -204,9 +204,81 @@
   font-size: 16px;
   line-height: 1.85;
 }
-.league-page .league-project-details .project-facts__row:nth-child(2) dd {
-  max-width: 100%;
-  text-wrap: balance;
+.league-page .league-project-details__roles > span { display: block; }
+.league-page .league-project-details__roles > span + span { margin-top: 6px; }
+
+/* Daejeon's design rationale supports the existing project imagery. */
+.league-page .league-case-approach {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 72px);
+  margin-top: clamp(40px, 5vw, 72px);
+}
+.league-page .league-case-approach__item {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.league-page .league-case-approach__copy {
+  margin: 24px 0 0;
+  color: var(--text);
+  font-size: clamp(18px, 1.55vw, 22px);
+  font-weight: 400;
+  line-height: 1.95;
+  word-break: keep-all;
+}
+.league-page .league-case-approach__detail {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.95;
+  word-break: keep-all;
+}
+.league-page .league-design-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 3.5vw, 50px);
+  margin: clamp(28px, 4vw, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.league-page .league-design-points > li {
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.league-page .league-design-points__number {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.league-page .league-design-points h3 {
+  margin: 16px 0 0;
+  color: var(--text);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -.03em;
+}
+.league-page .league-design-points p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+  word-break: keep-all;
+}
+@media (min-width: 1025px) {
+  .league-page .league-design-points > li:nth-child(3) p { max-width: 17.5em; }
+}
+@media (max-width: 1024px) {
+  .league-page .league-case-approach,
+  .league-page .league-design-points { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 720px) {
+  .league-page .league-case-approach__copy { margin-top: 22px; font-size: 18px; line-height: 1.9; }
+  .league-page .league-case-approach__detail { font-size: 16px; line-height: 1.9; }
+  .league-page .league-design-points h3 { font-size: 20px; }
+  .league-page .league-project-details .project-facts__row { grid-template-columns: 1fr; gap: 12px; }
+  .league-page .league-project-details dt { color: var(--accent); }
 }
 @media print {
   .league-page.case-motion :is(.case-block, .case-reading .case-word) { opacity: 1; filter: none; transform: none; }

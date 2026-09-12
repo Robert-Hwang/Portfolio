@@ -10,3 +10,5 @@
 - powerpoint: https://api.iconify.design/vscode-icons/file-type-powerpoint.svg
 
 Brand icons identify the tools used in this portfolio.
+
+- github: https://api.iconify.design/logos/github-icon.svg
