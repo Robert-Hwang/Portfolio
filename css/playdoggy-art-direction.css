@@ -279,3 +279,220 @@
   .playdoggy-case #challenge .need-card li { font-size: 14px; }
   .playdoggy-case #challenge .need-card ul { gap: 10px; }
 }
+
+/* Compare, prioritize, and implement: spacing carries the section rhythm. */
+.playdoggy-case #challenge .need-balance { align-items: stretch; }
+.playdoggy-case #challenge .need-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-block: 24px;
+  border-top: 0;
+}
+.playdoggy-case #challenge .need-card h3 { margin: 18px 0 24px; align-self: start; }
+.playdoggy-case #challenge .need-card ul { gap: 12px; align-content: start; }
+.playdoggy-case #challenge .case-audit { border-top: 0; }
+.playdoggy-case .priority-map--focused .priority-map__flow { gap: clamp(28px, 3vw, 48px); }
+.playdoggy-case .priority-map--focused .priority-map__flow > div {
+  min-height: 0;
+  padding-block: 24px;
+  border-top: 0;
+}
+.playdoggy-case .priority-map--focused .priority-map__flow > div > span { font-size: 12px; line-height: 1.5; }
+.playdoggy-case .priority-map--focused .priority-map__flow strong { margin-top: 20px; }
+.playdoggy-case .priority-map--focused .priority-map__flow p { max-width: 32ch; margin-top: 18px; line-height: 1.9; }
+.playdoggy-case .ux-decision { border-top: 0; }
+.playdoggy-case .publishing-flow { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+.playdoggy-case .publishing-flow > div {
+  padding-block: 24px;
+  border-top: 0;
+  text-align: left;
+}
+.playdoggy-case .publishing-flow span { font-size: 12px; line-height: 1.5; }
+.playdoggy-case .publishing-flow strong { margin-top: 20px; line-height: 1.5; }
+.playdoggy-case .publishing-flow small { max-width: 25ch; margin-top: 10px; line-height: 1.8; }
+@media (max-width: 1100px) {
+  .playdoggy-case .publishing-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 14px; }
+  .playdoggy-case .priority-map--focused .priority-map__flow { gap: 24px; }
+}
+@media (max-width: 768px) {
+  .playdoggy-case #challenge .need-card { padding-block: 20px; }
+  .playdoggy-case #challenge .need-card h3 { margin: 14px 0 20px; }
+  .playdoggy-case #challenge .need-card ul { gap: 10px; }
+  .playdoggy-case .priority-map--focused .priority-map__flow > div { padding-block: 16px; }
+  .playdoggy-case .priority-map--focused .priority-map__flow strong { margin-top: 14px; }
+  .playdoggy-case .priority-map--focused .priority-map__flow p { margin-top: 12px; }
+  .playdoggy-case .publishing-flow > div { padding-block: 18px; }
+  .playdoggy-case .publishing-flow strong { margin-top: 16px; }
+  .playdoggy-case .publishing-flow small { margin-top: 8px; }
+}
+
+/* Shared page grid: one container, equal columns, three spacing levels. */
+.playdoggy-case {
+  --pd-gutter: clamp(22px, 3.8vw, 72px);
+  --pd-gap: clamp(32px, 4vw, 64px);
+  --pd-section-space: clamp(88px, 9vw, 140px);
+  --pd-content-space: 56px;
+  --pd-item-space: 24px;
+  --pd-copy-width: 40rem;
+}
+.playdoggy-case .project-shell { width: min(100%, 1600px); padding-inline: var(--pd-gutter); }
+.playdoggy-case :is(#overview, #challenge, #strategy, #brand-system, #commerce-ux, #execution, #outcome) {
+  padding-block: var(--pd-section-space);
+  height: auto;
+  min-height: 0;
+}
+.playdoggy-case .project-section__head {
+  display: block;
+  position: relative;
+  margin-bottom: var(--pd-content-space);
+}
+.playdoggy-case .project-section__number { position: absolute; top: 0; left: 0; padding-top: 0; line-height: 1.5; }
+.playdoggy-case .project-section__title { margin: 0; }
+.playdoggy-case .project-section__title .case-heading-label { padding-left: 32px; }
+.playdoggy-case .project-section__intro { max-width: 840px; margin-top: var(--pd-item-space); }
+.playdoggy-case .project-stack-gap { margin-top: var(--pd-content-space); }
+.playdoggy-case .overview-layout,
+.playdoggy-case #challenge .case-audit,
+.playdoggy-case #outcome .what-changed,
+.playdoggy-case .ux-decision-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pd-content-space) var(--pd-gap);
+  align-items: start;
+  width: 100%;
+}
+.playdoggy-case .overview-copy { max-width: var(--pd-copy-width); }
+.playdoggy-case #outcome .what-changed { height: auto; min-height: 0; }
+.playdoggy-case #outcome .what-changed__list li { padding-block: var(--pd-item-space); }
+.playdoggy-case #outcome .what-changed__list p { line-height: 1.85; }
+.playdoggy-case #challenge .need-balance {
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pd-gap);
+}
+.playdoggy-case #challenge .need-card { padding: var(--pd-item-space) 0; }
+.playdoggy-case #challenge .need-card ul { max-width: var(--pd-copy-width); }
+.playdoggy-case #challenge .need-balance__bridge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 0;
+}
+.playdoggy-case #challenge .need-balance__bridge i { width: 40px; height: 40px; }
+.playdoggy-case .priority-map--focused .priority-map__flow { gap: var(--pd-gap); align-items: start; }
+.playdoggy-case .priority-map--focused .priority-map__flow > div { padding-block: var(--pd-item-space); }
+.playdoggy-case .priority-map--focused .priority-map__flow p { max-width: 32ch; }
+.playdoggy-case #challenge .case-audit { padding: 0; }
+.playdoggy-case #challenge .case-audit__notes { padding: 0; }
+.playdoggy-case .case-comparison { padding: 0; }
+.playdoggy-case .case-comparison__grid {
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pd-gap);
+  align-items: start;
+  padding: 0;
+}
+.playdoggy-case .case-comparison__arrow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.playdoggy-case .case-comparison > figcaption { padding-inline: 0; }
+.playdoggy-case .ux-decision { padding: var(--pd-item-space) 0; }
+.playdoggy-case #commerce-ux .ux-decision p { max-width: var(--pd-copy-width); line-height: 1.9; }
+.playdoggy-case .commerce-main--category { margin-inline: auto; }
+.playdoggy-case .publishing-flow { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--pd-item-space); padding: 0; }
+.playdoggy-case .publishing-flow > div { padding: var(--pd-item-space) 0; min-height: 0; grid-column: auto; }
+.playdoggy-case .publishing-flow small { max-width: 25ch; }
+.playdoggy-case .responsive-showcase { margin-top: var(--pd-content-space); }
+.playdoggy-case .responsive-showcase__devices { align-items: end; }
+@media (max-width: 1100px) {
+  .playdoggy-case .publishing-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 1024px) {
+  .playdoggy-case .overview-layout,
+  .playdoggy-case #challenge .case-audit,
+  .playdoggy-case #outcome .what-changed { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .playdoggy-case { --pd-gap: 28px; --pd-section-space: 76px; --pd-content-space: 36px; --pd-item-space: 20px; }
+  .playdoggy-case #challenge .need-balance,
+  .playdoggy-case .ux-decision-grid { grid-template-columns: 1fr; }
+  .playdoggy-case #challenge .need-balance__bridge { position: static; transform: none; margin-inline: auto; }
+  .playdoggy-case .case-comparison__grid { grid-template-columns: 1fr; gap: 28px; }
+  .playdoggy-case .case-comparison__arrow { position: static; transform: rotate(90deg); }
+  .playdoggy-case .publishing-flow { grid-template-columns: 1fr; gap: 12px; }
+  .playdoggy-case .publishing-flow > div:last-child { grid-column: auto; }
+  .playdoggy-case .publishing-flow small { max-width: 32ch; }
+}
+
+/* Problem categories: clearer labels without changing the comparison grid. */
+.playdoggy-case #challenge .case-kicker {
+  font-size: 14px;
+  font-weight: 750;
+}
+.playdoggy-case #challenge .need-card h3,
+.playdoggy-case #challenge .case-statement blockquote,
+.playdoggy-case #challenge .case-audit__notes h3 {
+  margin-top: 22px;
+}
+@media (max-width: 768px) {
+  .playdoggy-case #challenge .case-kicker { font-size: 13px; }
+  .playdoggy-case #challenge .need-card h3,
+  .playdoggy-case #challenge .case-statement blockquote,
+  .playdoggy-case #challenge .case-audit__notes h3 { margin-top: 18px; }
+}
+/* Later sections: strengthen the work and its four outcomes. */
+.playdoggy-case #commerce-ux .commerce-main--category { width: min(100%, 1008px); }
+.playdoggy-case #execution .publishing-flow { column-gap: 20px; }
+.playdoggy-case #execution .publishing-flow span {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.playdoggy-case #execution .publishing-flow strong {
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 650;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+.playdoggy-case #execution .publishing-flow small { margin-top: 9px; }
+.playdoggy-case #execution .responsive-showcase { margin-top: 36px; }
+.playdoggy-case #outcome .what-changed { grid-template-columns: 1fr; gap: 44px; }
+.playdoggy-case #outcome .what-changed__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px var(--pd-gap);
+  border-top: 0;
+}
+.playdoggy-case #outcome .what-changed__list li {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 18px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+.playdoggy-case #outcome .what-changed__list li > span {
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.5;
+  color: var(--accent);
+}
+.playdoggy-case #outcome .what-changed__list strong {
+  font-size: clamp(22px, 1.85vw, 26px);
+  font-weight: 650;
+}
+.playdoggy-case #outcome .what-changed__list p {
+  max-width: var(--pd-copy-width);
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.85;
+}
+@media (max-width: 768px) {
+  .playdoggy-case #execution .publishing-flow span { font-size: 13px; }
+  .playdoggy-case #execution .publishing-flow strong { font-size: 16px; margin-top: 14px; }
+  .playdoggy-case #execution .publishing-flow small { margin-top: 8px; }
+  .playdoggy-case #execution .responsive-showcase { margin-top: 28px; }
+  .playdoggy-case #outcome .what-changed { gap: 30px; }
+  .playdoggy-case #outcome .what-changed__list { grid-template-columns: 1fr; gap: 20px; }
+  .playdoggy-case #outcome .what-changed__list li { padding-block: 20px; gap: 16px; }
+  .playdoggy-case #outcome .what-changed__list strong { font-size: 21px; }
+}
